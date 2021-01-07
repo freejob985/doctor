@@ -56,6 +56,7 @@
             </div>
             <div class="col-lg-8">
               {{convertUtf8($quote->generateRandomString)}}
+              
             </div>
           </div>
           <hr>
