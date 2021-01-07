@@ -803,7 +803,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
     Route::get('/Reservation/dr', 'Admin\QuoteController@Reservation')->name('admin.Reservation.dr');
     Route::post('/Reservation/add', 'Admin\QuoteController@Reservation_add')->name('admin.Reservation.add');
-    Route::post('/Reservation/delete', 'Admin\QuoteController@delete')->name('admin.Reservation.delete');
+    Route::post('/Reservation/delete', 'Admin\QuoteController@delete_reservation')->name('admin.Reservation.delete');
 
 
 
