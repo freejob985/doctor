@@ -27,7 +27,9 @@
 </div>
 <p>
   <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.dr') }}">Add an appointment</a>
-  
+  <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.default') }}">The default for appointments
+  </a>
+
 </p>
 <div class="row">
   <div class="col-md-12">
