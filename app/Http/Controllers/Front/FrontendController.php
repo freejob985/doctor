@@ -36,13 +36,13 @@ use App\Statistic;
 use App\Subscriber;
 use App\Testimonial;
 use Config;
+use DB;
 use Illuminate\Http\Request;
 use PDF;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use Session;
 use Validator;
-use DB;
 
 class FrontendController extends Controller
 {
@@ -624,6 +624,8 @@ class FrontendController extends Controller
     public function quote__($id)
     {
 
+
+
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -650,9 +652,14 @@ class FrontendController extends Controller
             $version = 'default';
         }
 
-        $data['version'] = $version;
+        if(empty($id)){
+            return view('front.Reservation', $data);
 
-        return view('front.quote', $data);
+        }else{
+            return view('front.quote', $data);
+
+        }
+        $data['version'] = $version;
     }
 
     public function sendquote(Request $request)
@@ -664,7 +671,7 @@ class FrontendController extends Controller
             $currentLang = Language::where('is_default', 1)->first();
         }
         $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
-        
+
         DB::table('Reservation')
             ->where('id', $request->input('id_bookin'))
             ->update([
@@ -732,7 +739,7 @@ class FrontendController extends Controller
         $quote->name = $request->name;
         $quote->email = $request->email;
         $quote->fields = $jsonfields;
-        $quote->generateRandomString =  $request->generateRandomString;
+        $quote->generateRandomString = $request->generateRandomString;
 
         if ($request->hasFile('nda')) {
             $filename = uniqid() . '.' . $nda->getClientOriginalExtension();
