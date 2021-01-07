@@ -260,7 +260,7 @@ class QuoteController extends Controller
 
         $reservation = DB::table('Reservation')->find($id);
   //      dd($reservation);
-        return view('admin.quote.Reservation_edit', $data);
+        return view('admin.quote.Reservation_edit', $reservation);
     }
 
     public function processing()
