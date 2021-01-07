@@ -71,10 +71,13 @@
                           <td>{{convertUtf8($quote->Time)}}</td>
                           <td>
                           </td>
-                     
+                     <td>
+
+<button type="button" class="btn btn-success">Available</button>
+                     </td>
                           <td>
 
-                            <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}" class="btn btn-success btn-sm ">
+                            <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}" class="btn btn-info btn-sm ">
                               <span class="btn-label">
                              
                                 <i class="far fa-edit"></i>
@@ -85,7 +88,7 @@
                             <form class="deleteform d-inline-block" action="{{route('admin.Reservation.delete')}}" method="post">
                               @csrf
                               <input type="hidden" name="quote_id" value="{{$quote->id}}">
-                              <button type="submit" class="btn btn-danger btn-sm deletebtn">
+                              <button type="submit" class="btn btn-warning btn-sm deletebtn">
                                 <span class="btn-label">
                                   <i class="fas fa-trash"></i>
                                 </span>
