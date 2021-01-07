@@ -71,9 +71,7 @@
                           </td>
                           <td>
                           </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm editbtn" data-target="#mailModal" data-toggle="modal" data-email="{{$quote->email}}"><i class="far fa-envelope"></i> Send</a>
-                          </td>
+                     
                           <td>
                             <form class="deleteform d-inline-block" action="{{route('admin.Reservation.delete')}}" method="post">
                               @csrf
