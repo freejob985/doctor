@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Quote;
-use App\BasicSetting as BS;
 use App\BasicSetting;
+use App\BasicSetting as BS;
+use App\Http\Controllers\Controller;
 use App\Language;
 use App\Mail\ContactMail;
+use App\Quote;
 use App\QuoteInput;
 use App\QuoteInputOption;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
-use Validator;
 use Session;
+use Validator;
 
 class QuoteController extends Controller
 {
@@ -24,7 +23,8 @@ class QuoteController extends Controller
         return view('admin.quote.visibility', $data);
     }
 
-    public function updateVisibility(Request $request) {
+    public function updateVisibility(Request $request)
+    {
         $bss = BasicSetting::all();
         foreach ($bss as $key => $bs) {
             $bs->is_quote = $request->is_quote;
@@ -34,7 +34,6 @@ class QuoteController extends Controller
         $request->session()->flash('success', 'Page status updated successfully!');
         return back();
     }
-
 
     public function form(Request $request)
     {
@@ -55,7 +54,7 @@ class QuoteController extends Controller
 
         $messages = [
             'options.*.required_if' => 'Options are required if field type is select dropdown/checkbox',
-            'placeholder.required_unless' => 'The placeholder field is required unless field type is Checkbox'
+            'placeholder.required_unless' => 'The placeholder field is required unless field type is Checkbox',
         ];
 
         $rules = [
@@ -71,7 +70,7 @@ class QuoteController extends Controller
             ],
             'placeholder' => 'required_unless:type,3',
             'type' => 'required',
-            'options.*' => 'required_if:type,2,3'
+            'options.*' => 'required_if:type,2,3',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -159,7 +158,7 @@ class QuoteController extends Controller
                         }
                     }
                 },
-            ]
+            ],
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -167,7 +166,6 @@ class QuoteController extends Controller
             $errmsgs = $validator->getMessageBag()->add('error', 'true');
             return response()->json($validator->errors());
         }
-
 
         if ($request->type != 5) {
             $input->label = $request->label;
@@ -211,36 +209,54 @@ class QuoteController extends Controller
         return view('admin.quote.quote', $data);
     }
 
-        public function pending()
+    public function pending()
     {
         $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
         return view('admin.quote.quote', $data);
     }
 
-
     public function Reservation()
     {
         $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
 
-     //   dd("Catch errors for script and full tracking ( 1 )");
+        //   dd("Catch errors for script and full tracking ( 1 )");
 
         return view('admin.quote.Reservation', $data);
     }
-
-
 
     public function Reservation_add(Request $request)
     {
-        dd($request->all());
-        $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
 
-     //   dd("Catch errors for script and full tracking ( 1 )");
+        $this->validate($request, [
+            'day' => 'required',
+            'Number' => 'required',
+            'From' => 'required',
+            'to' => 'required',
+            'Time' => 'required',
 
-        return view('admin.quote.Reservation', $data);
+        ], [
+            'day.required' => ' The data field is required',
+            'Number.required' => ' The data field is required',
+            'From.required' => ' The data field is required',
+            'to.required' => ' The data field is required',
+            'Time.required' => ' The data field is required',
+
+        ]);
+
+        DB::table('reservation')->insert([
+            'day' => $request->input('day'),
+            'Number' => $request->input('Number'),
+            'From' => $request->input('From'),
+            'to' => $request->input('to'),
+            'Time' => $request->input('Time'),
+        ]);
+
+        //     $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
+
+        //   dd("Catch errors for script and full tracking ( 1 )");
+
+        return redirect()->back()->with('alert-success', 'ssss');
     }
-
-
-
 
     public function processing()
     {
@@ -275,7 +291,7 @@ class QuoteController extends Controller
         $rules = [
             'email' => 'required',
             'subject' => 'required',
-            'message' => 'required'
+            'message' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -283,7 +299,6 @@ class QuoteController extends Controller
             $errmsgs = $validator->getMessageBag()->add('error', 'true');
             return response()->json($validator->errors());
         }
-
 
         $settings = BS::first();
         $from = $settings->contact_mail;
@@ -302,7 +317,7 @@ class QuoteController extends Controller
     {
 
         $quote = Quote::findOrFail($request->quote_id);
-        @unlink('assets/front/ndas/'.$quote->nda);
+        @unlink('assets/front/ndas/' . $quote->nda);
         $quote->delete();
 
         Session::flash('success', 'Quote request deleted successfully!');
@@ -315,7 +330,7 @@ class QuoteController extends Controller
 
         foreach ($ids as $id) {
             $quote = Quote::findOrFail($id);
-            @unlink('assets/front/ndas/'.$quote->nda);
+            @unlink('assets/front/ndas/' . $quote->nda);
             $quote->delete();
         }
 
