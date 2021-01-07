@@ -56,7 +56,11 @@
             </tr>
             <tr>
               @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
-            <tr>
+            <tr style="
+            text-align: center;
+            font-size: 16px;
+            font-weight: bolder;
+        ">
               <td>{{convertUtf8($quote->day)}}</td>
               <td>{{convertUtf8($quote->Number)}}</td>
               <td>{{convertUtf8($quote->From)}}</td>
