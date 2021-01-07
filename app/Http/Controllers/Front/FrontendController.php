@@ -664,11 +664,11 @@ class FrontendController extends Controller
             $currentLang = Language::where('is_default', 1)->first();
         }
         $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
-        dd($status);
+        
         DB::table('Reservation')
             ->where('id', $request->input('id_bookin'))
             ->update([
-                'status' => $request->input('Time'),
+                'status' => $status,
             ]);
 
         $bs = $currentLang->basic_setting;
