@@ -42,6 +42,7 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use Session;
 use Validator;
+use DB;
 
 class FrontendController extends Controller
 {
