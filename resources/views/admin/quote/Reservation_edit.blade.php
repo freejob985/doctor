@@ -13,7 +13,7 @@
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Reservation Management</a>
+      <a href="{{ route('admin.Reservation.quotes') }}">Reservation Management</a>
     </li>
     <li class="separator">
       <i class="flaticon-right-arrow"></i>
