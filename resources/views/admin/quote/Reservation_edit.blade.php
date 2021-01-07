@@ -13,13 +13,13 @@
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Quote Management</a>
+      <a href="#">Reservation Management</a>
     </li>
     <li class="separator">
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Quotes</a>
+      <a href="#">Reservation</a>
     </li>
   </ul>
 </div>
@@ -30,7 +30,7 @@
       <div class="card-header">
         <div class="row">
           <div class="col-lg-6">
-            <div class="card-title d-inline-block">Quotes</div>
+            <div class="card-title d-inline-block">Reservation</div>
           </div>
           <div class="col-lg-6">
             <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete"

@@ -30,7 +30,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="card-title d-inline-block">Quotes</div>
+                    <div class="card-title d-inline-block">Reservation</div>
                 </div>
                 <div class="col-lg-6">
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.quote.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
