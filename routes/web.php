@@ -723,7 +723,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::post('/Reservation/updata/{id}', 'Admin\QuoteController@Reservation_updata')->name('admin.Reservation.updata');
 
         Route::get('default/Reservation', function () {
-            dd("Catch errors for script and full tracking ( 2 )");
+        DB::table('reservation')->update(['status' => "0"]);
         })->name('admin.Reservation.default');
 
     });
