@@ -259,7 +259,7 @@ class QuoteController extends Controller
     {
 
         $reservation = DB::table('Reservation')->find($id);
-  //      dd($reservation);
+        dd($reservation->id);
         return view('admin.quote.Reservation_edit', $reservation);
     }
 
