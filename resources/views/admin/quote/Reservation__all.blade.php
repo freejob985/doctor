@@ -66,6 +66,10 @@
                           </td>
                           <td>{{convertUtf8($quote->day)}}</td>
                           <td>{{convertUtf8($quote->Number)}}</td>
+                          <td>{{convertUtf8($quote->From)}}</td>
+                          <td>{{convertUtf8($quote->to)}}</td>
+
+
                           <td>
                             <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$quote->id}}"><i class="fas fa-eye"></i> View</button>
                           </td>
