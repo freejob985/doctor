@@ -74,7 +74,7 @@
                      
                           <td>
 
-                            <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}" class="btn btn-success btn-sm deletebtn">
+                            <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}" class="btn btn-success btn-sm ">
                               <span class="btn-label">
                                 <i class="fas fa-pencil-square-o"></i>
                               </span>
