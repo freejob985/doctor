@@ -76,7 +76,8 @@
 
                             <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}" class="btn btn-success btn-sm ">
                               <span class="btn-label">
-                                <i class="fas fa-trash"></i>
+                             
+                                <i class="far fa-edit"></i>
                               </span>
                               Modification
                             </a>
