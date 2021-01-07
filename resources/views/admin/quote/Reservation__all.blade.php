@@ -26,7 +26,7 @@
 
 </div>
 <p>
-  <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.add') }}">Add an appointment</a>
+  <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.dr') }}">Add an appointment</a>
   
 </p>
 <div class="row">
