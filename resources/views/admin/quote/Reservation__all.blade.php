@@ -69,9 +69,6 @@
                           <td>{{convertUtf8($quote->From)}}</td>
                           <td>{{convertUtf8($quote->to)}}</td>
                           <td>{{convertUtf8($quote->Time)}}</td>
-
-
-                     
                           <td>
                           </td>
                      
