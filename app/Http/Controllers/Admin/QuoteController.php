@@ -266,7 +266,7 @@ class QuoteController extends Controller
 
     public function Reservation_updata($id,Request $request)
     {
-        dd($request->all());
+       // dd($request->all());
         $this->validate($request, [
             'day' => 'required',
             'Number' => 'required',
