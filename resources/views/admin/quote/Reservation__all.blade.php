@@ -23,7 +23,9 @@
     </li>
   </ul>
   <br>
-  <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.add') }}">Add an appointment</a>
+  <p>
+    <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.add') }}">Add an appointment</a>
+  </p>
 </div>
 <div class="row">
   <div class="col-md-12">
