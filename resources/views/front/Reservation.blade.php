@@ -35,7 +35,28 @@
       <div class="row">
 
         <div class="col-lg-12">
-
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Firstname</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Anna</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Debbie</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>John</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
