@@ -789,11 +789,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     // Admin Quote Routes
     Route::get('/all/quotes', 'Admin\QuoteController@all')->name('admin.all.quotes');
     Route::get('/pending/quotes', 'Admin\QuoteController@pending')->name('admin.pending.quotes');
+    Route::get('/pending/quotes', 'Admin\QuoteController@pending')->name('admin.pending.quotes');
     Route::get('/processing/quotes', 'Admin\QuoteController@processing')->name('admin.processing.quotes');
     Route::get('/completed/quotes', 'Admin\QuoteController@completed')->name('admin.completed.quotes');
     Route::get('/rejected/quotes', 'Admin\QuoteController@rejected')->name('admin.rejected.quotes');
     Route::post('/quotes/status', 'Admin\QuoteController@status')->name('admin.quotes.status');
     Route::post('/quote/mail', 'Admin\QuoteController@mail')->name('admin.quotes.mail');
+
+    Route::get('/Reservation/dr', 'Admin\QuoteController@Reservation')->name('admin.Reservation.dr');
+
+
+
+
+
   });
 
 

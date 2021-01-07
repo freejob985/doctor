@@ -211,11 +211,23 @@ class QuoteController extends Controller
         return view('admin.quote.quote', $data);
     }
 
-    public function pending()
+        public function pending()
     {
         $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
         return view('admin.quote.quote', $data);
     }
+
+
+    public function Reservation()
+    {
+        $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
+
+        dd("Catch errors for script and full tracking ( 1 )");
+
+        return view('admin.quote.Reservation', $data);
+    }
+
+
 
     public function processing()
     {
