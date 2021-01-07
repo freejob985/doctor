@@ -1042,6 +1042,31 @@
 
 
 
+
+
+        
+        @if (empty($admin->role) || (!empty($permissions) && in_array('FAQ Management', $permissions)))
+          {{-- FAQ Management --}}
+          <li class="nav-item
+           @if(request()->path() == 'admin/Reservation/all') active @endif">
+            <a href="{{route('admin.Reservation.quotes') . '?language=' . $default->code}}">
+              <i class="la flaticon-round"></i>
+              <p>Reservation</p>
+            </a>
+          </li>
+        @endif
+        @if (empty($admin->role) || (!empty($permissions) && in_array('FAQ Management', $permissions)))
+          {{-- FAQ Management --}}
+          <li class="nav-item
+           @if(request()->path() == 'admin/Reservation/all') active @endif">
+            <a href="{{route('admin.faq.index') . '?language=' . $default->code}}">
+              <i class="la flaticon-round"></i>
+              <p>Reservation</p>
+            </a>
+          </li>
+        @endif
+
+
         @if (empty($admin->role) || (!empty($permissions) && in_array('Blogs', $permissions)))
           {{-- Blogs --}}
           <li class="nav-item

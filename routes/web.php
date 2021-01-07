@@ -799,7 +799,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
 
 
-    Route::get('/Reservation/all', 'Admin\QuoteController@Reservation__all')->name('admin.processing.quotes');
+    Route::get('/Reservation/all', 'Admin\QuoteController@Reservation__all')->name('admin.Reservation.quotes');
 
     Route::get('/Reservation/dr', 'Admin\QuoteController@Reservation')->name('admin.Reservation.dr');
     Route::post('/Reservation/add', 'Admin\QuoteController@Reservation_add')->name('admin.Reservation.add');
