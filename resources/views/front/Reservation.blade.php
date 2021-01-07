@@ -43,6 +43,8 @@
                 <td scope="col">From</td>
                 <td scope="col">to</td>
                 <td scope="col">Time</td>
+                <td scope="col">the status</td>
+                
               </tr>
               <tr>
                 @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
@@ -52,8 +54,6 @@
                   <td>{{convertUtf8($quote->From)}}</td>
                   <td>{{convertUtf8($quote->to)}}</td>
                   <td>{{convertUtf8($quote->Time)}}</td>
-                  <td>
-                  </td>
                   <td>
                     @php
                       $Available=$quote->status;
