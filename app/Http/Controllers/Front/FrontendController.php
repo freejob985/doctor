@@ -618,9 +618,18 @@ class FrontendController extends Controller
         return view('front.Reservation', $data);
     }
 
-
-    public function quote__()
+    function generateRandomString($length = 10) {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+    public function quote__($id)
     {
+        dd($id);
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -638,10 +647,9 @@ class FrontendController extends Controller
         $data['services'] = Service::all();
         $data['inputs'] = QuoteInput::where('language_id', $lang_id)->get();
         $data['ndaIn'] = QuoteInput::find(10);
-
+        $data['generateRandomString'] = $this->generateRandomString();
         $be = $currentLang->basic_extended;
         $version = getVersion($be->theme_version);
-
         if ($version == 'dark') {
             $version = 'default';
         }

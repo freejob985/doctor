@@ -33,11 +33,31 @@
   <div class="quote-area pt-115 pb-115">
     <div class="container">
       <div class="row">
-
+{{  $data['generateRandomString'] }}
         <div class="col-lg-12">
           <form action="{{route('front.sendquote')}}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="row">
+
+
+
+              <div class="col-lg-6">
+                <div class="form-element mb-4">
+                    <input name="id_bookin" type="hidden" value="" placeholder="{{__('Enter Name')}}">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-element mb-4">
+                  <input name="generateRandomString" type="hidden" value="" placeholder="{{__('Enter Name')}}">
+              </div>
+          </div>
+
+
+
+
+
+
                 <div class="col-lg-6">
                     <div class="form-element mb-4">
                         <label>{{__('Name')}} <span>**</span></label>
