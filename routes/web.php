@@ -724,10 +724,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::post('/Reservation/updata/{id}', 'Admin\QuoteController@Reservation_updata')->name('admin.Reservation.updata');
 
         Route::get('default/Reservation', function () {
-        DB::table('reservation')->update(['status' => "0"]);
+        DB::table('Reservation')->update(['status' => "0"]);
         return redirect()->back();
 
         })->name('admin.Reservation.default');
+
+        Route::get('default/Reservation/{id}', function ($id) {
+          DB::table('Reservation')->where('id',$id)->update(['status' => "0"]);
+          return redirect()->back();
+  
+          })->name('admin.Reservation.default.edit');
 
     });
 
