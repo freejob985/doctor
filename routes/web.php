@@ -795,7 +795,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::get('/rejected/quotes', 'Admin\QuoteController@rejected')->name('admin.rejected.quotes');
     Route::post('/quotes/status', 'Admin\QuoteController@status')->name('admin.quotes.status');
     Route::post('/quote/mail', 'Admin\QuoteController@mail')->name('admin.quotes.mail');
-    Reservation_edit
+    
 
 
 
