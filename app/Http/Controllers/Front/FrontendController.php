@@ -629,7 +629,7 @@ class FrontendController extends Controller
     }
     public function quote__($id)
     {
-        dd($id);
+    
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -648,6 +648,8 @@ class FrontendController extends Controller
         $data['inputs'] = QuoteInput::where('language_id', $lang_id)->get();
         $data['ndaIn'] = QuoteInput::find(10);
         $data['generateRandomString'] = $this->generateRandomString();
+        $data['id'] =$id;
+
         $be = $currentLang->basic_extended;
         $version = getVersion($be->theme_version);
         if ($version == 'dark') {
