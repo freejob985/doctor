@@ -45,7 +45,7 @@
                 <td scope="col">Time</td>
               </tr>
               <tr>
-                @foreach(DB::table('reservation')->orderBy('id','desc')->get() as $quote)
+                @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
                 <tr>
                   <td>
                     <input type="checkbox" class="bulk-check" data-val="{{$quote->id}}">
