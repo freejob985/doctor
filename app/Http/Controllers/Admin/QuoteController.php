@@ -263,6 +263,45 @@ class QuoteController extends Controller
         return view('admin.quote.Reservation_edit',compact('reservation'));
     }
 
+
+    public function Reservation_updata($id,Request $request)
+    {
+        dd($request->all());
+        $this->validate($request, [
+            'day' => 'required',
+            'Number' => 'required',
+            'From' => 'required',
+            'to' => 'required',
+            'Time' => 'required',
+
+        ], [
+            'day.required' => ' The data field is required',
+            'Number.required' => ' The data field is required',
+            'From.required' => ' The data field is required',
+            'to.required' => ' The data field is required',
+            'Time.required' => ' The data field is required',
+
+        ]);
+
+        DB::table('Reservation')
+        ->where('id', $id)
+        ->update([
+            'day' => $request->input('day'),
+            'Number' => $request->input('Number'),
+            'From' => $request->input('From'),
+            'to' => $request->input('to'),
+            'Time' => $request->input('Time'),
+        ]);
+        return redirect()->back()->with('alert-success', 'The appointment has been modified');
+
+
+
+
+    }
+
+
+
+
     public function processing()
     {
         $data['quotes'] = Quote::where('status', 1)->orderBy('id', 'DESC')->paginate(10);

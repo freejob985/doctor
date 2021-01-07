@@ -807,6 +807,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::get('/Reservation/edit/{id}', 'Admin\QuoteController@Reservation_edit')->name('admin.Reservation.edit');
 
 
+    Route::post('/Reservation/updata/{id}', 'Admin\QuoteController@Reservation_edit')->name('admin.Reservation.updata');
 
 
 
