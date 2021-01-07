@@ -1,4 +1,5 @@
 <?php
+use DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -724,6 +725,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
         Route::get('default/Reservation', function () {
         DB::table('reservation')->update(['status' => "0"]);
+        return redirect()->back();
+
         })->name('admin.Reservation.default');
 
     });
