@@ -43,13 +43,13 @@
 
               <div class="col-lg-6">
                 <div class="form-element mb-4">
-                    <input name="id_bookin" type="hidden" value="{{  $data['id'] }}" placeholder="{{__('Enter Name')}}">
+                    <input name="id_bookin" type="hidden" value="{{  $id }}" placeholder="{{__('Enter Name')}}">
                 </div>
             </div>
 
             <div class="col-lg-6">
               <div class="form-element mb-4">
-                  <input name="generateRandomString" type="hidden" value="{{  $data['generateRandomString'] }}" placeholder="{{__('Enter Name')}}">
+                  <input name="generateRandomString" type="hidden" value="{{  $generateRandomString }}" placeholder="{{__('Enter Name')}}">
               </div>
           </div>
 
