@@ -46,7 +46,7 @@
               @csrf
               {{-- ##########################(from bg)################################### --}}
               <div class="form-row">
-                <select class="selectpicker col-12" name="day" data-show-subtext="true">
+                <select class="form-control" name="day" data-show-subtext="true">
                   <option>Saturday</option>
                   <option>Sunday</option>
                   <option>Monday</option>
@@ -100,7 +100,7 @@
               </div>
               {{-- ############################################################# --}}
               <div class="form-row">
-                <select class="selectpicker col-12" name="Time" data-show-subtext="true">
+                <select class="form-control" name="Time" data-show-subtext="true">
                   <option>AM</option>
                   <option>PM</option>
                 </select>
