@@ -119,7 +119,7 @@
               <br>
               {{-- ##########################(end bg)################################### --}}
               <input type="submit" style="background: #011a25;" class="btn btn-primary btn-large btn-block"
-                value="Add a new appointment" />
+                value="Amending the proposed deadline" />
             </form>
             <br>
             @if(session()->has('alert-success'))
