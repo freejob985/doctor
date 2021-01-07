@@ -83,11 +83,11 @@
                         $Available=$quote->status;
                         if($Available==$quote->Number){
                        
-                          $status="Unavailable"
+                          $status="Unavailable";
                           $bootstrap="btn btn-danger btn-xs";
 
                         }else{
-                          $status="Available"
+                          $status="Available";
                           $bootstrap="btn btn-success btn-xs";
 
                         }  
