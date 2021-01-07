@@ -252,11 +252,7 @@ class QuoteController extends Controller
             'Time' => $request->input('Time'),
         ]);
 
-        //     $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
-
-        //   dd("Catch errors for script and full tracking ( 1 )");
-
-        return redirect()->back()->with('alert-success', 'ssss');
+        return redirect()->back()->with('alert-success', 'The new date has been added');
     }
 
     public function processing()
@@ -264,6 +260,12 @@ class QuoteController extends Controller
         $data['quotes'] = Quote::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
         return view('admin.quote.quote', $data);
     }
+    public function Reservation__all()
+    {
+        $data['quotes'] = Quote::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+        return view('admin.quote.Reservation__all', $data);
+    }
+
 
     public function completed()
     {
@@ -317,7 +319,6 @@ class QuoteController extends Controller
     public function delete(Request $request)
     {
 
-        $quote = Quote::findOrFail($request->quote_id);
         @unlink('assets/front/ndas/' . $quote->nda);
         $quote->delete();
 
@@ -325,16 +326,23 @@ class QuoteController extends Controller
         return back();
     }
 
+
+
+    public function delete_reservation(Request $request)
+    {
+        DB::table('Reservation')->where('id', '=', $request->quote_id)->delete();
+        Session::flash('success', 'Quote request deleted successfully!');
+        return back();
+    }
+
     public function bulkDelete(Request $request)
     {
         $ids = $request->ids;
-
         foreach ($ids as $id) {
             $quote = Quote::findOrFail($id);
             @unlink('assets/front/ndas/' . $quote->nda);
             $quote->delete();
         }
-
         Session::flash('success', 'Quote requests deleted successfully!');
         return "success";
     }
