@@ -651,6 +651,7 @@ class FrontendController extends Controller
         if ($version == 'dark') {
             $version = 'default';
         }
+        $data['version'] = $version;
 
         if(empty($id)){
             return view('front.Reservation', $data);
@@ -659,7 +660,6 @@ class FrontendController extends Controller
             return view('front.quote', $data);
 
         }
-        $data['version'] = $version;
     }
 
     public function sendquote(Request $request)
