@@ -615,7 +615,7 @@ class FrontendController extends Controller
 
         $data['version'] = $version;
 
-        return view('front.quote', $data);
+        return view('front.Reservation', $data);
     }
 
     public function sendquote(Request $request)
