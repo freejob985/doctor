@@ -36,25 +36,68 @@
 
         <div class="col-lg-12">
           <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Firstname</th>
-              </tr>
-            </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>Anna</td>
+                <td scope="col">day</td>
+                <td scope="col">Number</td>
+                <td scope="col">From</td>
+                <td scope="col">to</td>
+                <td scope="col">Time</td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>Debbie</td>
+                @foreach(DB::table('reservation')->orderBy('id','desc')->get() as $quote)
+                <tr>
+                  <td>
+                    <input type="checkbox" class="bulk-check" data-val="{{$quote->id}}">
+                  </td>
+                  <td>{{convertUtf8($quote->day)}}</td>
+                  <td>{{convertUtf8($quote->Number)}}</td>
+                  <td>{{convertUtf8($quote->From)}}</td>
+                  <td>{{convertUtf8($quote->to)}}</td>
+                  <td>{{convertUtf8($quote->Time)}}</td>
+                  <td>
+                  </td>
+                  <td>
+                    @php
+                      $Available=$quote->status;
+                      if($Available==$quote->Number){
+                     
+                        $status="Unavailable";
+                        $bootstrap="btn btn-danger btn-xs";
+
+                      }else{
+                        $status="Available";
+                        $bootstrap="btn btn-success btn-xs";
+
+                      }  
+                    @endphp
+                    <button type="button" class="{{ $bootstrap }}">{{ $status }}</button>
+                  </td>
+                  <td>
+                    <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}"
+                      class="btn btn-info btn-sm ">
+                      <span class="btn-label">
+                        <i class="far fa-edit"></i>
+                      </span>
+                      Modification
+                    </a>
+                    <form class="deleteform d-inline-block" action="{{route('admin.Reservation.delete')}}"
+                      method="post">
+                      @csrf
+                      <input type="hidden" name="quote_id" value="{{$quote->id}}">
+                      <button type="submit" class="btn btn-warning btn-sm deletebtn">
+                        <span class="btn-label">
+                          <i class="fas fa-trash"></i>
+                        </span>
+                        Delete
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+
+                @endforeach
               </tr>
-              <tr>
-                <td>3</td>
-                <td>John</td>
-              </tr>
+        
             </tbody>
           </table>
         </div>
