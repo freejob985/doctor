@@ -2,52 +2,46 @@
 
 namespace App\Http\Controllers\Front;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-use App\BasicSetting as BS;
-use App\BasicExtended as BE;
-use App\Slider;
-use App\Scategory;
-use App\Jcategory;
-use App\Portfolio;
-use App\Feature;
-use App\Point;
-use App\Statistic;
-use App\Testimonial;
-use App\Gallery;
-use App\Faq;
-use App\Page;
-use App\Member;
-use App\Blog;
-use App\Partner;
-use App\Service;
-use App\Job;
 use App\Archive;
+use App\BasicExtended as BE;
+use App\BasicSetting as BS;
 use App\Bcategory;
-use App\Subscriber;
-use App\Quote;
-use App\Language;
-use App\Package;
-use App\PackageOrder;
-use App\Admin;
+use App\Blog;
 use App\CalendarEvent;
-use App\Mail\ContactMail;
-use App\Mail\OrderPackage;
-use App\Mail\OrderQuote;
+use App\Faq;
+use App\Feature;
+use App\Gallery;
+use App\Http\Controllers\Controller;
+use App\Jcategory;
+use App\Job;
+use App\Language;
+use App\Member;
 use App\OfflineGateway;
+use App\Package;
 use App\PackageInput;
+use App\PackageOrder;
+use App\Page;
+use App\Partner;
 use App\PaymentGateway;
+use App\Point;
+use App\Portfolio;
+use App\Quote;
 use App\QuoteInput;
 use App\RssFeed;
 use App\RssPost;
+use App\Scategory;
+use App\Service;
+use App\Slider;
+use App\Statistic;
+use App\Subscriber;
+use App\Testimonial;
+use Config;
+use Illuminate\Http\Request;
+use PDF;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use Session;
 use Validator;
-use Config;
-use Mail;
-use PDF;
 
 class FrontendController extends Controller
 {
@@ -118,7 +112,6 @@ class FrontendController extends Controller
         $data['currentLang'] = $currentLang;
         $be = $currentLang->basic_extended;
 
-
         $category = $request->category;
         $term = $request->term;
 
@@ -133,7 +126,6 @@ class FrontendController extends Controller
         })->when($currentLang, function ($query, $currentLang) {
             return $query->where('language_id', $currentLang->id);
         })->orderBy('serial_number', 'ASC')->paginate(6);
-
 
         $version = getVersion($be->theme_version);
 
@@ -304,8 +296,8 @@ class FrontendController extends Controller
         $data['job'] = Job::findOrFail($id);
 
         $data['jobscount'] = Job::when($currentLang, function ($query, $currentLang) {
-                                    return $query->where('language_id', $currentLang->id);
-                                })->count();
+            return $query->where('language_id', $currentLang->id);
+        })->count();
 
         $be = $currentLang->basic_extended;
         $version = getVersion($be->theme_version);
@@ -315,7 +307,6 @@ class FrontendController extends Controller
         }
 
         $data['version'] = $version;
-
 
         return view('front.career-details', $data);
 
@@ -354,18 +345,18 @@ class FrontendController extends Controller
         $data['blogs'] = Blog::when($catid, function ($query, $catid) {
             return $query->where('bcategory_id', $catid);
         })
-        ->when($term, function ($query, $term) {
-            return $query->where('title', 'like', '%' . $term . '%');
-        })
-        ->when($tag, function ($query, $tag) {
-            return $query->where('tags', 'like', '%' . $tag . '%');
-        })
-        ->when($archive, function ($query) use ($month, $year) {
-            return $query->whereMonth('created_at', $month)->whereYear('created_at', $year);
-        })
-        ->when($currentLang, function ($query, $currentLang) {
-            return $query->where('language_id', $currentLang->id);
-        })->orderBy('serial_number', 'ASC')->paginate(6);
+            ->when($term, function ($query, $term) {
+                return $query->where('title', 'like', '%' . $term . '%');
+            })
+            ->when($tag, function ($query, $tag) {
+                return $query->where('tags', 'like', '%' . $tag . '%');
+            })
+            ->when($archive, function ($query) use ($month, $year) {
+                return $query->whereMonth('created_at', $month)->whereYear('created_at', $year);
+            })
+            ->when($currentLang, function ($query, $currentLang) {
+                return $query->where('language_id', $currentLang->id);
+            })->orderBy('serial_number', 'ASC')->paginate(6);
 
         $version = getVersion($be->theme_version);
 
@@ -374,7 +365,6 @@ class FrontendController extends Controller
         }
 
         $data['version'] = $version;
-
 
         return view('front.blogs', $data);
     }
@@ -388,7 +378,6 @@ class FrontendController extends Controller
         }
 
         $lang_id = $currentLang->id;
-
 
         $data['blog'] = Blog::findOrFail($id);
 
@@ -407,7 +396,8 @@ class FrontendController extends Controller
         return view('front.blog-details', $data);
     }
 
-    public function rss(){
+    public function rss()
+    {
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -415,8 +405,8 @@ class FrontendController extends Controller
         }
 
         $lang_id = $currentLang->id;
-        $data['categories'] = RssFeed::where('language_id',$lang_id)->orderBy('id','desc')->get();
-        $data['rss_posts']  = RssPost::where('language_id',$lang_id)->orderBy('id','desc')->paginate(4);
+        $data['categories'] = RssFeed::where('language_id', $lang_id)->orderBy('id', 'desc')->get();
+        $data['rss_posts'] = RssPost::where('language_id', $lang_id)->orderBy('id', 'desc')->paginate(4);
 
         $be = $currentLang->basic_extended;
         $version = getVersion($be->theme_version);
@@ -438,7 +428,8 @@ class FrontendController extends Controller
         }
     }
 
-    public function rssdetails($slug, $id){
+    public function rssdetails($slug, $id)
+    {
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -446,8 +437,8 @@ class FrontendController extends Controller
         }
 
         $lang_id = $currentLang->id;
-        $data['categories'] = RssFeed::where('language_id',$lang_id)->orderBy('id','desc')->get();
-        $data['post']  = RssPost::findOrFail($id);
+        $data['categories'] = RssFeed::where('language_id', $lang_id)->orderBy('id', 'desc')->get();
+        $data['post'] = RssPost::findOrFail($id);
 
         $be = $currentLang->basic_extended;
         $version = getVersion($be->theme_version);
@@ -461,7 +452,8 @@ class FrontendController extends Controller
         return view('front.rss-details', $data);
     }
 
-    public function rcatpost($id){
+    public function rcatpost($id)
+    {
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -471,8 +463,8 @@ class FrontendController extends Controller
         $lang_id = $currentLang->id;
 
         $data['cat_id'] = $id;
-        $data['categories'] = RssFeed::where('language_id',$lang_id)->orderBy('id','desc')->get();
-        $data['posts']  = RssFeed::findOrFail($id)->rss()->orderBy('id', 'DESC')->paginate(4);
+        $data['categories'] = RssFeed::where('language_id', $lang_id)->orderBy('id', 'desc')->get();
+        $data['posts'] = RssFeed::findOrFail($id)->rss()->orderBy('id', 'DESC')->paginate(4);
 
         $be = $currentLang->basic_extended;
         $version = getVersion($be->theme_version);
@@ -536,12 +528,12 @@ class FrontendController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'subject' => 'required',
-            'message' => 'required'
+            'message' => 'required',
         ];
 
         $request->validate($rules, $messages);
 
-        $be =  BE::firstOrFail();
+        $be = BE::firstOrFail();
         $from = $request->email;
         $to = $be->to_mail;
         $subject = $request->subject;
@@ -551,15 +543,15 @@ class FrontendController extends Controller
 
             $mail = new PHPMailer(true);
             $mail->setFrom($from, $request->name);
-            $mail->addAddress($to);     // Add a recipient
+            $mail->addAddress($to); // Add a recipient
 
             // Content
-            $mail->isHTML(true);  // Set email format to HTML
+            $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = $subject;
-            $mail->Body    = $message;
+            $mail->Body = $message;
 
             $mail->send();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             // die($e->getMessage());
         }
 
@@ -570,7 +562,7 @@ class FrontendController extends Controller
     public function subscribe(Request $request)
     {
         $rules = [
-            'email' => 'required|email|unique:subscribers'
+            'email' => 'required|email|unique:subscribers',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -618,7 +610,8 @@ class FrontendController extends Controller
         return view('front.Reservation', $data);
     }
 
-    function generateRandomString($length = 10) {
+    public function generateRandomString($length = 10)
+    {
         $characters = '0123456789';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -629,7 +622,7 @@ class FrontendController extends Controller
     }
     public function quote__($id)
     {
-    
+
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -648,7 +641,7 @@ class FrontendController extends Controller
         $data['inputs'] = QuoteInput::where('language_id', $lang_id)->get();
         $data['ndaIn'] = QuoteInput::find(10);
         $data['generateRandomString'] = $this->generateRandomString();
-        $data['id'] =$id;
+        $data['id'] = $id;
 
         $be = $currentLang->basic_extended;
         $version = getVersion($be->theme_version);
@@ -663,12 +656,19 @@ class FrontendController extends Controller
 
     public function sendquote(Request $request)
     {
-        dd($request->all());
+
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
             $currentLang = Language::where('is_default', 1)->first();
         }
+        $status = intval(DB::table('reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
+        dd($status);
+        DB::table('reservation')
+            ->where('id', $request->input('id_bookin'))
+            ->update([
+                'status' => $request->input('Time'),
+            ]);
 
         $bs = $currentLang->basic_setting;
         $be = $currentLang->basic_extended;
@@ -699,13 +699,11 @@ class FrontendController extends Controller
             ],
         ];
 
-
         if ($ndaIn->required == 1 && $ndaIn->active == 1) {
             if (!$request->hasFile('nda')) {
                 $rules["nda"] = 'required';
             }
         }
-
 
         foreach ($quote_inputs as $input) {
             if ($input->required == 1) {
@@ -727,8 +725,7 @@ class FrontendController extends Controller
             }
         }
         $jsonfields = json_encode($fields);
-        $jsonfields = str_replace("\/","/",$jsonfields);
-
+        $jsonfields = str_replace("\/", "/", $jsonfields);
 
         $quote = new Quote;
         $quote->name = $request->name;
@@ -743,7 +740,6 @@ class FrontendController extends Controller
 
         $quote->save();
 
-
         // send mail to Admin
         $from = $request->email;
         $to = $be->to_mail;
@@ -755,15 +751,15 @@ class FrontendController extends Controller
 
             $mail = new PHPMailer(true);
             $mail->setFrom($from, $request->name);
-            $mail->addAddress($to);     // Add a recipient
+            $mail->addAddress($to); // Add a recipient
 
             // Content
-            $mail->isHTML(true);  // Set email format to HTML
+            $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = $subject;
-            $mail->Body    = 'A new quote request has been sent.<br/><strong>Client Name: </strong>' . $request->name . '<br/><strong>Client Mail: </strong>' . $request->email;
+            $mail->Body = 'A new quote request has been sent.<br/><strong>Client Name: </strong>' . $request->name . '<br/><strong>Client Mail: </strong>' . $request->email;
 
             $mail->send();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             // die($e->getMessage());
         }
 
@@ -813,7 +809,6 @@ class FrontendController extends Controller
 
         $data['jcats'] = $currentLang->jcategories()->where('status', 1)->orderBy('serial_number', 'ASC')->get();
 
-
         $category = $request->category;
         $term = $request->term;
 
@@ -845,7 +840,8 @@ class FrontendController extends Controller
         return view('front.career', $data);
     }
 
-    public function calendar() {
+    public function calendar()
+    {
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -861,10 +857,10 @@ class FrontendController extends Controller
             $formattedEvents["$key"]['title'] = $event->title;
 
             $startDate = strtotime($event->start_date);
-            $formattedEvents["$key"]['start'] = date('Y-m-d H:i' ,$startDate);
+            $formattedEvents["$key"]['start'] = date('Y-m-d H:i', $startDate);
 
             $endDate = strtotime($event->end_date);
-            $formattedEvents["$key"]['end'] = date('Y-m-d H:i' ,$endDate);
+            $formattedEvents["$key"]['end'] = date('Y-m-d H:i', $endDate);
         }
 
         $data["formattedEvents"] = $formattedEvents;
@@ -979,8 +975,8 @@ class FrontendController extends Controller
         }
 
         $data['inputs'] = PackageInput::where('language_id', $lang_id)->get();
-        $data['gateways']  = PaymentGateway::whereStatus(1)->whereType('automatic')->get();
-        $data['ogateways']  = OfflineGateway::wherePackageOrderStatus(1)->orderBy('serial_number', 'ASC')->get();
+        $data['gateways'] = PaymentGateway::whereStatus(1)->whereType('automatic')->get();
+        $data['ogateways'] = OfflineGateway::wherePackageOrderStatus(1)->orderBy('serial_number', 'ASC')->get();
         $paystackData = PaymentGateway::whereKeyword('paystack')->first();
         $data['paystack'] = $paystackData->convertAutoData();
         $data['ndaIn'] = PackageInput::find(1);
@@ -996,7 +992,6 @@ class FrontendController extends Controller
 
         return view('front.package-order', $data);
     }
-
 
     public function submitorder(Request $request)
     {
@@ -1032,7 +1027,7 @@ class FrontendController extends Controller
                         return $fail("Only doc, docx, pdf, rtf, txt, zip, rar files are allowed");
                     }
 
-                }
+                },
             ],
         ];
 
@@ -1062,7 +1057,7 @@ class FrontendController extends Controller
             }
         }
         $jsonfields = json_encode($fields);
-        $jsonfields = str_replace("\/","/",$jsonfields);
+        $jsonfields = str_replace("\/", "/", $jsonfields);
 
         $package = Package::findOrFail($request->package_id);
 
@@ -1081,25 +1076,21 @@ class FrontendController extends Controller
         $in['package_currency'] = $package->currency;
         $in['package_price'] = $package->price;
         $in['package_description'] = $package->description;
-        $fileName = str_random(4).time().'.pdf';
+        $fileName = str_random(4) . time() . '.pdf';
         $in['invoice'] = $fileName;
         $po = PackageOrder::create($in);
-
 
         // saving order number
         $po->order_number = $po->id + 1000000000;
         $po->save();
-
 
         // sending datas to view to make invoice PDF
         $fields = json_decode($po->fields, true);
         $data['packageOrder'] = $po;
         $data['fields'] = $fields;
 
-
         // generate pdf from view using dynamic datas
         PDF::loadView('pdf.package', $data)->save('assets/front/invoices/' . $fileName);
-
 
         // Send Mail to Buyer
         $mail = new PHPMailer(true);
@@ -1108,25 +1099,25 @@ class FrontendController extends Controller
             try {
                 //Server settings
                 // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-                $mail->isSMTP();                                            // Send using SMTP
-                $mail->Host       = $be->smtp_host;                    // Set the SMTP server to send through
-                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = $be->smtp_username;                     // SMTP username
-                $mail->Password   = $be->smtp_password;                               // SMTP password
-                $mail->SMTPSecure = $be->encryption;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-                $mail->Port       = $be->smtp_port;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+                $mail->isSMTP(); // Send using SMTP
+                $mail->Host = $be->smtp_host; // Set the SMTP server to send through
+                $mail->SMTPAuth = true; // Enable SMTP authentication
+                $mail->Username = $be->smtp_username; // SMTP username
+                $mail->Password = $be->smtp_password; // SMTP password
+                $mail->SMTPSecure = $be->encryption; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                $mail->Port = $be->smtp_port; // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
                 //Recipients
                 $mail->setFrom($be->from_mail, $be->from_name);
-                $mail->addAddress($request->email, $request->name);     // Add a recipient
+                $mail->addAddress($request->email, $request->name); // Add a recipient
 
                 // Attachments
-                $mail->addAttachment('assets/front/invoices/' . $fileName);         // Add attachments
+                $mail->addAttachment('assets/front/invoices/' . $fileName); // Add attachments
 
                 // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->isHTML(true); // Set email format to HTML
                 $mail->Subject = "Order placed for " . $package->title;
-                $mail->Body    = 'Hello <strong>'.$request->name.'</strong>,<br/>Your order has been placed successfully. We have attached an invoice in this mail.<br/>Thank you.';
+                $mail->Body = 'Hello <strong>' . $request->name . '</strong>,<br/>Your order has been placed successfully. We have attached an invoice in this mail.<br/>Thank you.';
 
                 $mail->send();
             } catch (Exception $e) {
@@ -1137,15 +1128,15 @@ class FrontendController extends Controller
 
                 //Recipients
                 $mail->setFrom($be->from_mail, $be->from_name);
-                $mail->addAddress($request->email, $request->name);     // Add a recipient
+                $mail->addAddress($request->email, $request->name); // Add a recipient
 
                 // Attachments
-                $mail->addAttachment('assets/front/invoices/' . $fileName);         // Add attachments
+                $mail->addAttachment('assets/front/invoices/' . $fileName); // Add attachments
 
                 // Content
-                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->isHTML(true); // Set email format to HTML
                 $mail->Subject = "Order placed for " . $package->title;
-                $mail->Body    = 'Hello <strong>'.$request->name.'</strong>,<br/>Your order has been placed successfully. We have attached an invoice in this mail.<br/>Thank you.';
+                $mail->Body = 'Hello <strong>' . $request->name . '</strong>,<br/>Your order has been placed successfully. We have attached an invoice in this mail.<br/>Thank you.';
 
                 $mail->send();
             } catch (Exception $e) {
@@ -1158,18 +1149,18 @@ class FrontendController extends Controller
 
             $mail = new PHPMailer(true);
             $mail->setFrom($po->email, $po->name);
-            $mail->addAddress($be->from_mail);     // Add a recipient
+            $mail->addAddress($be->from_mail); // Add a recipient
 
             // Attachments
-            $mail->addAttachment('assets/front/invoices/' . $fileName);         // Add attachments
+            $mail->addAttachment('assets/front/invoices/' . $fileName); // Add attachments
 
             // Content
-            $mail->isHTML(true);  // Set email format to HTML
+            $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = "Order placed for " . $package->title;
-            $mail->Body    = 'A new order has been placed.<br/><strong>Order Number: </strong>' . $po->order_number;
+            $mail->Body = 'A new order has been placed.<br/><strong>Order Number: </strong>' . $po->order_number;
 
             $mail->send();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             // die($e->getMessage());
         }
 
@@ -1177,8 +1168,8 @@ class FrontendController extends Controller
         return redirect()->route('front.packageorder.confirmation', [$package->id, $po->id]);
     }
 
-
-    public function orderConfirmation($packageid, $packageOrderId) {
+    public function orderConfirmation($packageid, $packageOrderId)
+    {
         $data['package'] = Package::findOrFail($packageid);
         $packageOrder = PackageOrder::findOrFail($packageOrderId);
 
@@ -1197,13 +1188,12 @@ class FrontendController extends Controller
         return view('front.order-confirmation', $data);
     }
 
-
-    public function loadpayment($slug,$id)
+    public function loadpayment($slug, $id)
     {
         $data['payment'] = $slug;
         $data['pay_id'] = $id;
         $gateway = '';
-        if($data['pay_id'] != 0 && $data['payment'] != "offline" ) {
+        if ($data['pay_id'] != 0 && $data['payment'] != "offline") {
             $gateway = PaymentGateway::findOrFail($data['pay_id']);
         } else {
             $gateway = OfflineGateway::findOrFail($data['pay_id']);
@@ -1212,17 +1202,18 @@ class FrontendController extends Controller
 
         return view('front.load.payment', $data);
 
-    }    // Redirect To Checkout Page If Payment is Cancelled
+    } // Redirect To Checkout Page If Payment is Cancelled
 
-    public function paycancle($packageid){
-        return redirect()->route('front.packageorder.index', $packageid)->with('error',__('Payment Cancelled.'));
+    public function paycancle($packageid)
+    {
+        return redirect()->route('front.packageorder.index', $packageid)->with('error', __('Payment Cancelled.'));
     }
-
 
     // Redirect To Success Page If Payment is Comleted
 
-     public function payreturn($packageid){
-        return redirect()->route('front.packageorder.index', $packageid)->with('success',__('Pament Compelted!'));
-     }
+    public function payreturn($packageid)
+    {
+        return redirect()->route('front.packageorder.index', $packageid)->with('success', __('Pament Compelted!'));
+    }
 
 }
