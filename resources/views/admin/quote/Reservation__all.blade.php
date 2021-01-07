@@ -73,6 +73,14 @@
                           </td>
                      
                           <td>
+
+                            <a type="submit" href="{{ route('routeName', [$quote->id]) }}" class="btn btn-success btn-sm deletebtn">
+                              <span class="btn-label">
+                                <i class="fas fa-pencil-square-o"></i>
+                              </span>
+                              Modification
+                            </a>
+
                             <form class="deleteform d-inline-block" action="{{route('admin.Reservation.delete')}}" method="post">
                               @csrf
                               <input type="hidden" name="quote_id" value="{{$quote->id}}">
