@@ -663,9 +663,9 @@ class FrontendController extends Controller
         } else {
             $currentLang = Language::where('is_default', 1)->first();
         }
-        $status = intval(DB::table('reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
+        $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
         dd($status);
-        DB::table('reservation')
+        DB::table('Reservation')
             ->where('id', $request->input('id_bookin'))
             ->update([
                 'status' => $request->input('Time'),
@@ -732,6 +732,7 @@ class FrontendController extends Controller
         $quote->name = $request->name;
         $quote->email = $request->email;
         $quote->fields = $jsonfields;
+        $quote->generateRandomString =  $request->generateRandomString;
 
         if ($request->hasFile('nda')) {
             $filename = uniqid() . '.' . $nda->getClientOriginalExtension();
