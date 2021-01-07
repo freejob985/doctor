@@ -47,7 +47,6 @@
               font-weight: 800;
           ">
               <td scope="col">day</td>
-              <td scope="col">Number</td>
               <td scope="col">From</td>
               <td scope="col">to</td>
               <td scope="col">Time</td>
@@ -62,7 +61,6 @@
             font-weight: bolder;
         ">
               <td>{{convertUtf8($quote->day)}}</td>
-              <td>{{convertUtf8($quote->Number)}}</td>
               <td>{{convertUtf8($quote->From)}}</td>
               <td>{{convertUtf8($quote->to)}}</td>
               <td>{{convertUtf8($quote->Time)}}</td>
