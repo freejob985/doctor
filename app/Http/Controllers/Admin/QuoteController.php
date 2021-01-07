@@ -10,11 +10,11 @@ use App\Mail\ContactMail;
 use App\Quote;
 use App\QuoteInput;
 use App\QuoteInputOption;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Session;
 use Validator;
-use DB;
 
 class QuoteController extends Controller
 {
@@ -255,6 +255,14 @@ class QuoteController extends Controller
         return redirect()->back()->with('alert-success', 'The new date has been added');
     }
 
+    public function Reservation_edit($id)
+    {
+
+        $reservation = DB::table('Reservation')->find($id);
+        dd($reservation);
+        return redirect()->back()->with('alert-success', 'The new date has been added');
+    }
+
     public function processing()
     {
         $data['quotes'] = Quote::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
@@ -262,10 +270,9 @@ class QuoteController extends Controller
     }
     public function Reservation__all()
     {
-        $data['quotes'] =  DB::table('Reservation')->orderBy('id', 'DESC')->paginate(10);
+        $data['quotes'] = DB::table('Reservation')->orderBy('id', 'DESC')->paginate(10);
         return view('admin.quote.Reservation__all', $data);
     }
-
 
     public function completed()
     {
@@ -325,8 +332,6 @@ class QuoteController extends Controller
         Session::flash('success', 'Quote request deleted successfully!');
         return back();
     }
-
-
 
     public function delete_reservation(Request $request)
     {

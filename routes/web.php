@@ -795,7 +795,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::get('/rejected/quotes', 'Admin\QuoteController@rejected')->name('admin.rejected.quotes');
     Route::post('/quotes/status', 'Admin\QuoteController@status')->name('admin.quotes.status');
     Route::post('/quote/mail', 'Admin\QuoteController@mail')->name('admin.quotes.mail');
-
+    Reservation_edit
 
 
 
@@ -804,6 +804,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::get('/Reservation/dr', 'Admin\QuoteController@Reservation')->name('admin.Reservation.dr');
     Route::post('/Reservation/add', 'Admin\QuoteController@Reservation_add')->name('admin.Reservation.add');
     Route::post('/Reservation/delete', 'Admin\QuoteController@delete_reservation')->name('admin.Reservation.delete');
+    Route::get('/Reservation/edit/{id}', 'Admin\QuoteController@Reservation_edit')->name('admin.Reservation.edit');
 
 
 
