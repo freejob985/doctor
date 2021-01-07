@@ -73,8 +73,9 @@
                           </td>
                      <td>
 
-<button type="button" class="btn btn-success">Available</button>
+<button type="button" class="btn btn-success btn-xs">Available</button>
                      </td>
+    
                           <td>
 
                             <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}" class="btn btn-info btn-sm ">
