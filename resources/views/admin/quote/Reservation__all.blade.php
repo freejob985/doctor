@@ -79,7 +79,20 @@
                     <td>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-success btn-xs">Available</button>
+                      @php
+                        $Available=$quote->status;
+                        if($Available==$quote->Number){
+                       
+                          $status="Unavailable"
+                          $bootstrap="btn btn-danger btn-xs";
+
+                        }else{
+                          $status="Available"
+                          $bootstrap="btn btn-success btn-xs";
+
+                        }  
+                      @endphp
+                      <button type="button" class="{{ $bootstrap }}">{{ $status }}</button>
                     </td>
                     <td>
                       <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}"
