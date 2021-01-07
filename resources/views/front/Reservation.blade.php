@@ -47,9 +47,6 @@
               <tr>
                 @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
                 <tr>
-                  <td>
-                    <input type="checkbox" class="bulk-check" data-val="{{$quote->id}}">
-                  </td>
                   <td>{{convertUtf8($quote->day)}}</td>
                   <td>{{convertUtf8($quote->Number)}}</td>
                   <td>{{convertUtf8($quote->From)}}</td>
@@ -73,26 +70,7 @@
                     @endphp
                     <button type="button" class="{{ $bootstrap }}">{{ $status }}</button>
                   </td>
-                  <td>
-                    <a type="submit" href="{{ route('admin.Reservation.edit', [$quote->id]) }}"
-                      class="btn btn-info btn-sm ">
-                      <span class="btn-label">
-                        <i class="far fa-edit"></i>
-                      </span>
-                      Modification
-                    </a>
-                    <form class="deleteform d-inline-block" action="{{route('admin.Reservation.delete')}}"
-                      method="post">
-                      @csrf
-                      <input type="hidden" name="quote_id" value="{{$quote->id}}">
-                      <button type="submit" class="btn btn-warning btn-sm deletebtn">
-                        <span class="btn-label">
-                          <i class="fas fa-trash"></i>
-                        </span>
-                        Delete
-                      </button>
-                    </form>
-                  </td>
+       
                 </tr>
 
                 @endforeach
