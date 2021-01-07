@@ -75,7 +75,7 @@
                             <a href="#" class="btn btn-primary btn-sm editbtn" data-target="#mailModal" data-toggle="modal" data-email="{{$quote->email}}"><i class="far fa-envelope"></i> Send</a>
                           </td>
                           <td>
-                            <form class="deleteform d-inline-block" action="{{route('admin.quote.delete')}}" method="post">
+                            <form class="deleteform d-inline-block" action="{{route('admin.Reservation.delete')}}" method="post">
                               @csrf
                               <input type="hidden" name="quote_id" value="{{$quote->id}}">
                               <button type="submit" class="btn btn-danger btn-sm deletebtn">

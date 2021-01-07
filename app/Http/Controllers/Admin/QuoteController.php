@@ -262,7 +262,7 @@ class QuoteController extends Controller
     }
     public function Reservation__all()
     {
-        $data['quotes'] = Quote::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+        $data['quotes'] =  DB::table('Reservation')->orderBy('id', 'DESC')->paginate(10);
         return view('admin.quote.Reservation__all', $data);
     }
 
