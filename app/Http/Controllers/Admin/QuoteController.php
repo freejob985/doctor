@@ -267,22 +267,8 @@ class QuoteController extends Controller
     public function Reservation_updata($id,Request $request)
     {
        // dd($request->all());
-        $this->validate($request, [
-            'day' => 'required',
-            'Number' => 'required',
-            'From' => 'required',
-            'to' => 'required',
-            'Time' => 'required',
 
-        ], [
-            'day.required' => ' The data field is required',
-            'Number.required' => ' The data field is required',
-            'From.required' => ' The data field is required',
-            'to.required' => ' The data field is required',
-            'Time.required' => ' The data field is required',
-
-        ]);
-
+       dd($request->all());
         DB::table('Reservation')
         ->where('id', $id)
         ->update([
