@@ -244,7 +244,7 @@ class QuoteController extends Controller
 
         ]);
 
-        DB::table('reservation')->insert([
+        DB::table('Reservation')->insert([
             'day' => $request->input('day'),
             'Number' => $request->input('Number'),
             'From' => $request->input('From'),
