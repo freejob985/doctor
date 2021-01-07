@@ -231,7 +231,7 @@ class QuoteController extends Controller
 
     public function Reservation_add(Request $request)
     {
-        
+        dd($request->all());
         $data['quotes'] = Quote::where('status', 0)->orderBy('id', 'DESC')->paginate(10);
 
      //   dd("Catch errors for script and full tracking ( 1 )");

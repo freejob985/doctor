@@ -42,7 +42,7 @@
         <div class="row">
           <div class="col-lg-12">
 
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.Reservation.add') }}" method="POST" enctype="multipart/form-data">
               @csrf
               {{-- ##########################(from bg)################################### --}}
               <div class="form-row">
