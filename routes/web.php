@@ -37,6 +37,8 @@ Route::group(['middleware' => 'setlang'], function() {
   Route::post('/sendmail', 'Front\FrontendController@sendmail')->name('front.sendmail');
   Route::post('/subscribe', 'Front\FrontendController@subscribe')->name('front.subscribe');
   Route::get('/quote', 'Front\FrontendController@quote')->name('front.quote');
+  Route::get('/quote/send/{id}', 'Front\FrontendController@quote__')->name('front.quote.send');
+
   Route::post('/sendquote', 'Front\FrontendController@sendquote')->name('front.sendquote');
 
 

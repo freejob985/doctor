@@ -70,17 +70,18 @@
                 @php
                 $Available=$quote->status;
                 if($Available==$quote->Number){
-
                 $status="Unavailable";
                 $bootstrap="btn btn-danger btn-xs";
-
+                $route="#" ;
+                
                 }else{
                 $status="Available";
                 $bootstrap="btn btn-success btn-xs";
+                $route= route('front.quote.send', ['id'=>$quote->id]) ;
 
                 }
                 @endphp
-                <button type="button" class="{{ $bootstrap }}">{{ $status }}</button>
+                <a type="button" class="{{ $bootstrap }}" href="{{ $route }}">{{ $status }}</button>
               </td>
 
             </tr>

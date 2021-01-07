@@ -618,6 +618,39 @@ class FrontendController extends Controller
         return view('front.Reservation', $data);
     }
 
+
+    public function quote__()
+    {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+
+        $bs = $currentLang->basic_setting;
+
+        if ($bs->is_quote == 0) {
+            return view('errors.404');
+        }
+
+        $lang_id = $currentLang->id;
+
+        $data['services'] = Service::all();
+        $data['inputs'] = QuoteInput::where('language_id', $lang_id)->get();
+        $data['ndaIn'] = QuoteInput::find(10);
+
+        $be = $currentLang->basic_extended;
+        $version = getVersion($be->theme_version);
+
+        if ($version == 'dark') {
+            $version = 'default';
+        }
+
+        $data['version'] = $version;
+
+        return view('front.quote', $data);
+    }
+
     public function sendquote(Request $request)
     {
         dd($request->all());
