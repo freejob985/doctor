@@ -259,8 +259,8 @@ class QuoteController extends Controller
     {
 
         $reservation = DB::table('Reservation')->find($id);
-        dd($reservation);
-        return redirect()->back()->with('alert-success', 'The new date has been added');
+  //      dd($reservation);
+        return view('admin.quote.Reservation_edit', $data);
     }
 
     public function processing()
