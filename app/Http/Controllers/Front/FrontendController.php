@@ -620,6 +620,7 @@ class FrontendController extends Controller
 
     public function sendquote(Request $request)
     {
+        dd($request->all());
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
