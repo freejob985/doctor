@@ -25,7 +25,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.default.edit', [$reservation->day]) }}">The default for appointments</a>
+    <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.default.edit', [$reservation->id]) }}">The default for appointments</a>
 
     <div class="card">
       <div class="card-header">
