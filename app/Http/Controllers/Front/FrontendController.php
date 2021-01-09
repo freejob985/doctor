@@ -624,6 +624,9 @@ class FrontendController extends Controller
     public function quote__($id)
     {
 
+        $Number = DB::table('Reservation')->where('id', $id)->value('Number');
+        $status = DB::table('Reservation')->where('id', $id)->value('status');
+
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -650,8 +653,8 @@ class FrontendController extends Controller
             $version = 'default';
         }
         $data['version'] = $version;
-
-        if (empty($id)) {
+        remind();
+        if ($Number == $status) {
             return view('front.Reservation', $data);
 
         } else {
@@ -771,12 +774,12 @@ class FrontendController extends Controller
         }
 
         $data = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('data');
-      //  dd($data);
+        //  dd($data);
         $From = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('From');
         $to = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('to');
         $Time = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('Time');
-        $History =" &nbsp; Day &nbsp; ". day__($data) . " - " ." &nbsp; Dated &nbsp;". $data . " - " . "&nbsp; From time &nbsp; From &nbsp;" . $From . "&nbsp; to &nbsp;" . $to;
-   
+        $History = " &nbsp; Day &nbsp; " . day__($data) . " - " . " &nbsp; Dated &nbsp;" . $data . " - " . "&nbsp; From time &nbsp; From &nbsp;" . $From . "&nbsp; to &nbsp;" . $to;
+
         DB::table('remind')->insert([
             'Email' => $request->input('email'),
             'Today' => day__($data),
