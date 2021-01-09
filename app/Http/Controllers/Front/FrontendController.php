@@ -662,11 +662,11 @@ class FrontendController extends Controller
         }
     }
 
-س    public function sendquote(Request $request)
+   public function sendquote(Request $request)
     {
 
 
-    //   dd($request->all());
+       dd($request->all());
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
