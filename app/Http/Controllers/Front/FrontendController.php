@@ -624,8 +624,6 @@ class FrontendController extends Controller
     public function quote__($id)
     {
 
-
-
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -653,31 +651,24 @@ class FrontendController extends Controller
         }
         $data['version'] = $version;
 
-        if(empty($id)){
+        if (empty($id)) {
             return view('front.Reservation', $data);
 
-        }else{
+        } else {
             return view('front.quote', $data);
 
         }
     }
 
-   public function sendquote(Request $request)
+    public function sendquote(Request $request)
     {
 
-
-       dd($request->all());
+        dd($request->all());
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
             $currentLang = Language::where('is_default', 1)->first();
         }
-
-
-
-
-                    
-
 
         $bs = $currentLang->basic_setting;
         $be = $currentLang->basic_extended;
@@ -755,7 +746,7 @@ class FrontendController extends Controller
             ->update([
                 'status' => $status,
             ]);
-            remind();
+        remind();
         // send mail to Admin
         $from = $request->email;
         $to = $be->to_mail;
@@ -779,18 +770,21 @@ class FrontendController extends Controller
             // die($e->getMessage());
         }
 
-
         $data = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('data');
-
+        $From = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('From');
+        $to = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('to');
+        $Time = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('Time');
+        $data = day__($data) . "-" . $data . "-" . "&nbsp;" . $From . "&nbsp;" . $to;
         DB::table('remind')->insert([
             'Email' => $request->input('email'),
-            'Today' => day__( $data),
-            'Reminders' => data_sub( $data),
+            'Today' => day__($data),
+            'Reminders' => data_sub($data),
             'details' => $request->input('details'),
-            'status' => "0",
-                    ]);
+            'History' => $data,
+            'Noun' => $request->input('name'),
+            'Detection_type' => $request->input('Consaltion_type'),
+        ]);
 
-                    
         Session::flash('success', 'Quote request sent successfully');
         return back();
     }
