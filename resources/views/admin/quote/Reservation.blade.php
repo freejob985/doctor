@@ -45,19 +45,20 @@
             <form action="{{ route('admin.Reservation.add') }}" method="POST" enctype="multipart/form-data">
               @csrf
               {{-- ##########################(from bg)################################### --}}
+   
+
+
               <div class="form-row">
-                <select class="form-control" name="day" data-show-subtext="true">
-                  <option>Saturday</option>
-                  <option>Sunday</option>
-                  <option>Monday</option>
-                  <option>Tuesday</option>
-                  <option>Wednesday</option>
-                  <option>Thursday</option>
-                  <option>Friday</option>
-                </select>
-                @if ($errors->has('day'))
-                <span class="helper-text" data-error="wrong" data-success="right">{{ $errors->first('day') }}</span>
-                @endif
+                <div class="col-md-12 mb-4">
+                  <label for="day">data</label>
+                  <input type="date" placeholder="Please enter data" class="form-control" name="day" id="day"
+                    placeholder="" value="{{Request::old('day')}}">
+                  @if ($errors->has('day'))
+                  <div class="invalid-feedback">
+                    {{ $errors->first('day') }}
+                  </div>
+                  @endif
+                </div>
               </div>
               {{-- ############################################################# --}}
               <div class="form-row">
