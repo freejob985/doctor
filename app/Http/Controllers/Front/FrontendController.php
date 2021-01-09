@@ -653,7 +653,7 @@ class FrontendController extends Controller
             $version = 'default';
         }
         $data['version'] = $version;
-        remind();
+        //remind();
         if ($Number == $status) {
             return view('front.Reservation', $data);
 
