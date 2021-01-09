@@ -24,9 +24,9 @@
 
 <body style="margin: 0; padding: 0;">
     <P>
-        <p> Dear اسم المريض الي بيبقي مكتوب ف النموذج</p>
-        <P> we reminder you that you have an appointment with Dr. med. Dieter Roettger for نوع الكشف الي قولتلك عليه</P>
-        <P> at اليوم والتاريخ والساعه</P>
+        <p>{!!$array['Noun']!!}</p>
+        <P> we reminder you that you have an appointment with Dr. med. Dieter Roettger for {!!$array['Detection_type']!!}</P>
+        <P>{!!$array['History']!!}</P>
         <P>Regards</P>
     </P>
 </body>
