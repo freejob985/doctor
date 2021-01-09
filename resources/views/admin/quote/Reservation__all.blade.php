@@ -28,7 +28,10 @@
 <p>
   <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.dr') }}">Add an appointment</a>
   <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.Reservation.default') }}">The default for appointments
+    
   </a>
+  <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.remind') }}">Remind</a>
+
 
 </p>
 <div class="row">

@@ -674,15 +674,7 @@ class FrontendController extends Controller
         }
 
 
-        $data = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('data');
 
-        DB::table('remind')->insert([
-            'Email' => $request->input('email'),
-            'Today' => day__( $data),
-            'Reminders' => data_sub( $data),
-            'details' => $request->input('details'),
-            'status' => "0",
-                    ]);
 
                     
         $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
@@ -787,6 +779,18 @@ class FrontendController extends Controller
             // die($e->getMessage());
         }
 
+
+        $data = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('data');
+
+        DB::table('remind')->insert([
+            'Email' => $request->input('email'),
+            'Today' => day__( $data),
+            'Reminders' => data_sub( $data),
+            'details' => $request->input('details'),
+            'status' => "0",
+                    ]);
+
+                    
         Session::flash('success', 'Quote request sent successfully');
         return back();
     }

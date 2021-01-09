@@ -724,31 +724,28 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::post('/Reservation/updata/{id}', 'Admin\QuoteController@Reservation_updata')->name('admin.Reservation.updata');
 
         Route::get('default/Reservation', function () {
-        DB::table('Reservation')->update(['status' => "0"]);
-        return redirect()->back();
+            DB::table('Reservation')->update(['status' => "0"]);
+            return redirect()->back();
 
         })->name('admin.Reservation.default');
 
-
-
-
-        
-
-        Route::get('default/Reservation/{id}', function ($id) {
-          DB::table('Reservation')->where('id',$id)->update(['status' => "0"]);
-          return redirect()->back();
-  
-          })->name('admin.Reservation.default.edit');
-
-
-
-          
-        Route::get('default/Reservation/{id}', function ($id) {
-            DB::table('Reservation')->where('id',$id)->update(['status' => "0"]);
+        Route::get('default/remind', function () {
+            $date = date("Y-m-d");
+            dd($date);
             return redirect()->back();
-    
-            })->name('admin.Reservation.default.edit');
-            
+        })->name('admin.remind');
+
+        Route::get('default/Reservation/{id}', function ($id) {
+            DB::table('Reservation')->where('id', $id)->update(['status' => "0"]);
+            return redirect()->back();
+
+        })->name('admin.Reservation.default.edit');
+
+        Route::get('default/Reservation/{id}', function ($id) {
+            DB::table('Reservation')->where('id', $id)->update(['status' => "0"]);
+            return redirect()->back();
+
+        })->name('admin.Reservation.default.edit');
 
     });
 
