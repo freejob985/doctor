@@ -140,7 +140,9 @@
   </div>
 </div>
 
-
+@php
+remind();1
+@endphp
 <!-- Send Mail Modal -->
 <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
