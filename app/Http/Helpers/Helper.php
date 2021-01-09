@@ -42,6 +42,13 @@ $dayOfWeek = date("l", $unixTimestamp);
 //Print out the day that our date fell on.
 return  $dayOfWeek;
 }
+
+
+ function data_sub($data){
+
+date_sub($data,date_interval_create_from_date_string("1 days"));
+return date_format($data,"Y-m-d");
+}
 if (!function_exists('setEnvironmentValue')) {
     function setEnvironmentValue(array $values)
     {
