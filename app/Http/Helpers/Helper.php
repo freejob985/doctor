@@ -30,6 +30,8 @@ function remind(){
 
         });
     }  
+
+    DB::table('remind')->where('status', '=', "1")->delete();
 }
 
 
