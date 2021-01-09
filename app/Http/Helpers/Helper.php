@@ -44,10 +44,10 @@ return  $dayOfWeek;
 }
 
 
- function data_sub($data){
-
-date_sub($data,date_interval_create_from_date_string("1 days"));
-return date_format($data,"Y-m-d");
+ function data_sub($datastring){
+    $date=date_create($datastring);
+date_sub($date,date_interval_create_from_date_string("1 days"));
+return date_format($date,"Y-m-d");
 }
 if (!function_exists('setEnvironmentValue')) {
     function setEnvironmentValue(array $values)
