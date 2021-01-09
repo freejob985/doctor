@@ -250,7 +250,7 @@ class QuoteController extends Controller
             'From' => $request->input('From'),
             'to' => $request->input('to'),
             'Time' => $request->input('Time'),
-            'data' => $request->input('Time'),
+            'data' => $request->input('day'),
         ]);
 
         return redirect()->back()->with('alert-success', 'The new date has been added');
