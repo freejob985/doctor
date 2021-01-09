@@ -21,83 +21,15 @@
     </style>
 
 </head>
+
 <body style="margin: 0; padding: 0;">
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr>
-            <td style="padding: 20px 0 30px 0;">
-
-                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"
-                    style="border-collapse: collapse; border: 1px solid #cccccc;">
-                    <tr>
-                        <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
-                            <img src="https://assets.codepen.io/210284/h1_1.gif" alt="Creating Email Magic." width="300"
-                                height="230" style="display: block;" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%"
-                                style="border-collapse: collapse;">
-
-
-
-
-
-                                <tr>
-                                    <td style="color: #153643; font-family: Arial, sans-serif;">
-                                        <h1 style="font-size: 24px; margin: 0;">Title</h1>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
-                                        <p style="margin: 0;">{{$array['Title']}}</p>
-                                    </td>
-                                </tr>
-
-
-
-
-                                <tr>
-                                    <td style="color: #153643; font-family: Arial, sans-serif;">
-                                        <h1 style="font-size: 24px; margin: 0;">reminder</h1>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
-                                        <p style="margin: 0;">{{$array['reminder']}}</p>
-                                    </td>
-                                </tr>
-
-
-
-                                <tr>
-                                    <td style="color: #153643; font-family: Arial, sans-serif;">
-                                        <h1 style="font-size: 24px; margin: 0;"> details</h1>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
-                                        <p style="margin: 0;">{!!$array['details']!!}</p>
-                                    </td>
-                                </tr>
-
-
-
-                    
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-
-                    </tr>
-                </table>
-
-            </td>
-        </tr>
-    </table>
+    <P>
+        <p> Dear اسم المريض الي بيبقي مكتوب ف النموذج</p>
+        <P> we reminder you that you have an appointment with Dr. med. Dieter Roettger for نوع الكشف الي قولتلك عليه</P>
+        <P> at اليوم والتاريخ والساعه</P>
+        <P>Regards</P>
+    </P>
 </body>
 @dd("Catch errors for script and full tracking ( 6)");
+
 </html>
