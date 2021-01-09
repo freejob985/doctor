@@ -29,7 +29,7 @@
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"
                     style="border-collapse: collapse; border: 1px solid #cccccc;">
                     <tr>
-                        <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
+                        <td align="center" bgcolor="#fffff" style="padding: 40px 0 30px 0;">
                             <img src="https://sub.alriyadah-tr.com/assets/front/img/5ff4f902171b8.png" alt="Creating Email Magic." width="300"
                                 height="230" style="display: block;" />
                         </td>
