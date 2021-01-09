@@ -732,7 +732,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::get('default/remind', function () {
             $date = date("Y-m-d");
             $remind=DB::table('remind')->where('Reminders',$date)->orderBy('id', 'desc')->get();
-            dd($remind);
+            foreach ($remind as $item) {
+  
+                $array=array();
+                $array['Email']=  $item->Email;
+                $array['Title']= "Date reminder";
+                $array['reminder']= "You are reminded of the agreed date";
+                $array['details']= $item->details;
+                
+
+
+                
+                        }
+            dd($array);
             return redirect()->back();
         })->name('admin.remind');
 
