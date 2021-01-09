@@ -733,13 +733,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
             $date = date("Y-m-d");
             $remind = DB::table('remind')->where('Reminders', $date)->orderBy('id', 'desc')->get();
             foreach ($remind as $item) {
-
+                DB::table('remind')
+                    ->where('id', $item->id)
+                    ->update([
+                        'status' => "1",
+                    ]);
                 $array = array();
                 $array['Email'] = $item->Email;
                 $array['Title'] = "Date reminder";
                 $array['reminder'] = "You are reminded of the agreed date";
                 $array['details'] = $item->details;
-
                 Mail::send('remind', ['array' => $array], function ($m) use ($array) {
                     $m->to($array['Email'])->subject('alriyadah@sub.alriyadah-tr.com')->getSwiftMessage()
                         ->getHeaders()
