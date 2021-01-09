@@ -21,7 +21,6 @@
     </style>
 
 </head>
-@dd("Catch errors for script and full tracking ( 5)");
 <body style="margin: 0; padding: 0;">
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
@@ -46,13 +45,13 @@
 
                                 <tr>
                                     <td style="color: #153643; font-family: Arial, sans-serif;">
-                                        <h1 style="font-size: 24px; margin: 0;">الموضوع</h1>
+                                        <h1 style="font-size: 24px; margin: 0;">Title</h1>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td
                                         style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
-                                        <p style="margin: 0;">{{$array['subject']}}</p>
+                                        <p style="margin: 0;">{{$array['Title']}}</p>
                                     </td>
                                 </tr>
 
@@ -61,13 +60,13 @@
 
                                 <tr>
                                     <td style="color: #153643; font-family: Arial, sans-serif;">
-                                        <h1 style="font-size: 24px; margin: 0;">المرسل</h1>
+                                        <h1 style="font-size: 24px; margin: 0;">reminder</h1>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td
                                         style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
-                                        <p style="margin: 0;">{{$array['users']}}</p>
+                                        <p style="margin: 0;">{{$array['details']}}</p>
                                     </td>
                                 </tr>
 
@@ -75,29 +74,19 @@
 
                                 <tr>
                                     <td style="color: #153643; font-family: Arial, sans-serif;">
-                                        <h1 style="font-size: 24px; margin: 0;">موضوع التذكرة</h1>
+                                        <h1 style="font-size: 24px; margin: 0;"> details</h1>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td
                                         style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
-                                        <p style="margin: 0;">{!!$array['description']!!}</p>
+                                        <p style="margin: 0;">{!!$array['details']!!}</p>
                                     </td>
                                 </tr>
 
 
 
-                                <tr>
-                                    <td style="color: #153643; font-family: Arial, sans-serif;">
-                                        <h1 style="font-size: 24px; margin: 0;">الرد</h1>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 20px 0 30px 0;">
-                                        <p style="margin: 0;">{!!$array['reply']!!}</p>
-                                    </td>
-                                </tr>
+                    
                             </table>
                         </td>
                     </tr>
@@ -112,3 +101,4 @@
 </body>
 
 </html>
+@dd("Catch errors for script and full tracking ( 5)");
