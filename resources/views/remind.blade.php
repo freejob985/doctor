@@ -30,6 +30,5 @@
         <P>Regards</P>
     </P>
 </body>
-//@dd("Catch errors for script and full tracking ( 6)");
 
 </html>
