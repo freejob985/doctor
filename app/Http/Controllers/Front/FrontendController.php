@@ -666,7 +666,7 @@ class FrontendController extends Controller
     {
 
 
-       dd($request->all());
+    //   dd($request->all());
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
@@ -674,13 +674,14 @@ class FrontendController extends Controller
         }
 
 
+        $data = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('data');
 
         DB::table('remind')->insert([
-            'Email' => $request->input('Email'),
-            'Today' => $request->input('Today'),
-            'Reminders' => $request->input('Reminders'),
+            'Email' => $request->input('email'),
+            'Today' => day__( $data),
+            'Reminders' => data_sub( $data),
             'details' => $request->input('details'),
-            'status' => $request->input('status'),
+            'status' => "0",
                     ]);
 
                     
