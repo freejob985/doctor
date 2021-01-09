@@ -686,7 +686,7 @@ class FrontendController extends Controller
 
                     
         $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
-        num_day($request->input('id_bookin'));
+       
         DB::table('Reservation')
             ->where('id', $request->input('id_bookin'))
             ->update([
