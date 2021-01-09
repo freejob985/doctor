@@ -731,32 +731,27 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
         Route::get('default/remind', function () {
             $date = date("Y-m-d");
-            $remind=DB::table('remind')->where('Reminders',$date)->orderBy('id', 'desc')->get();
+            $remind = DB::table('remind')->where('Reminders', $date)->orderBy('id', 'desc')->get();
             foreach ($remind as $item) {
-  
-                $array=array();
-                $array['Email']=  $item->Email;
-                $array['Title']= "Date reminder";
-                $array['reminder']= "You are reminded of the agreed date";
-                $array['details']= $item->details;
-         
-   
- 
-     		Mail::send('remind', ['array' => $array], function($m) use ($array){
-					$m->to( $array['Email'])->subject('alriyadah@sub.alriyadah-tr.com')->getSwiftMessage()
-					->getHeaders()
-					->addTextHeader('x-mailgun-native-send', 'true');
-					   $m->from('alriyadah@sub.alriyadah-tr.com','alriyadah');
-					
-					
-					
-				});
-				
-                dd($array);
 
-                
-                        }
-         
+                $array = array();
+                $array['Email'] = $item->Email;
+                $array['Title'] = "Date reminder";
+                $array['reminder'] = "You are reminded of the agreed date";
+                $array['details'] = $item->details;
+
+                Mail::send('remind', ['array' => $array], function ($m) use ($array) {
+                    $m->to($array['Email'])->subject('alriyadah@sub.alriyadah-tr.com')->getSwiftMessage()
+                        ->getHeaders()
+                        ->addTextHeader('x-mailgun-native-send', 'true');
+                    $m->from('alriyadah@sub.alriyadah-tr.com', 'alriyadah');
+
+                });
+
+                //           dd($array);
+
+            }
+
             return redirect()->back();
         })->name('admin.remind');
 
