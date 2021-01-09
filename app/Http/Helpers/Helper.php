@@ -8,25 +8,40 @@ function num_day ($id) {
     $day = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('day');
 
     if ($day == "Saturday") {
-        $num = 1;
-    } elseif ($day == "Sunday") {
-        $num = 2;
-    } elseif ($day == "Monday") {
-        $num = 3;
-    } elseif ($day == "Tuesday") {
-        $num = 4;
-    } elseif ($day == "Wednesday") {
-        $num = 5;
-    } elseif ($day == "Thursday") {
-        $num = 6;
-    } elseif ($day == "Friday") {
         $num = 7;
+    } elseif ($day == "Sunday") {
+        $num = 1;
+    } elseif ($day == "Monday") {
+        $num = 2;
+    } elseif ($day == "Tuesday") {
+        $num = 3;
+    } elseif ($day == "Wednesday") {
+        $num = 4;
+    } elseif ($day == "Thursday") {
+        $num = 5;
+    } elseif ($day == "Friday") {
+        $num = 6;
     }
 
     
     return  date('Y-m-d', strtotime('+ ' . $num . 'days'));
 };
 
+
+
+
+function day__($date){
+    $date = "2021-1-10";
+ 
+//Convert the date string into a unix timestamp.
+$unixTimestamp = strtotime($date);
+ 
+//Get the day of the week using PHP's date function.
+$dayOfWeek = date("l", $unixTimestamp);
+ 
+//Print out the day that our date fell on.
+return  $dayOfWeek;
+}
 if (!function_exists('setEnvironmentValue')) {
     function setEnvironmentValue(array $values)
     {
