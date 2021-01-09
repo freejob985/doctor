@@ -731,7 +731,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
         Route::get('default/remind', function () {
             $date = date("Y-m-d");
-            dd($date);
+            $remind=DB::table('remind')->where('Reminders',$date)->orderBy('id', 'desc')->get();
+            dd($remind);
             return redirect()->back();
         })->name('admin.remind');
 
