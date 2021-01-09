@@ -101,4 +101,3 @@
 </body>
 
 </html>
-@dd("Catch errors for script and full tracking ( 5)");
