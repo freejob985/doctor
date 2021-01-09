@@ -662,7 +662,7 @@ class FrontendController extends Controller
         }
     }
 
-    public function sendquote(Request $request)
+س    public function sendquote(Request $request)
     {
 
 
@@ -677,13 +677,7 @@ class FrontendController extends Controller
 
 
                     
-        $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
-       
-        DB::table('Reservation')
-            ->where('id', $request->input('id_bookin'))
-            ->update([
-                'status' => $status,
-            ]);
+
 
         $bs = $currentLang->basic_setting;
         $be = $currentLang->basic_extended;
@@ -755,7 +749,13 @@ class FrontendController extends Controller
         }
 
         $quote->save();
-
+        $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
+        DB::table('Reservation')
+            ->where('id', $request->input('id_bookin'))
+            ->update([
+                'status' => $status,
+            ]);
+            remind();
         // send mail to Admin
         $from = $request->email;
         $to = $be->to_mail;
