@@ -243,13 +243,14 @@ class QuoteController extends Controller
             'Time.required' => ' The data field is required',
 
         ]);
-
+        
         DB::table('Reservation')->insert([
-            'day' => $request->input('day'),
+            'day' => day__($request->input('day')),
             'Number' => $request->input('Number'),
             'From' => $request->input('From'),
             'to' => $request->input('to'),
             'Time' => $request->input('Time'),
+            'data' => $request->input('Time'),
         ]);
 
         return redirect()->back()->with('alert-success', 'The new date has been added');

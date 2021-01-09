@@ -31,7 +31,7 @@ function num_day ($id) {
 
 
 function day__($date){
-    $date = "2021-1-10";
+  
  
 //Convert the date string into a unix timestamp.
 $unixTimestamp = strtotime($date);
