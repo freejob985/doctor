@@ -1,8 +1,11 @@
 <?php
 use App\Page;
 use PHPMailer\PHPMailer\SMTP;
+use DB;
 
-function num_day ($day) {
+
+function num_day ($id) {
+    $day = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('day');
 
     if ($day == "Saturday") {
         $num = 1;
@@ -19,6 +22,7 @@ function num_day ($day) {
     } elseif ($day == "Friday") {
         $num = 7;
     }
+
     
     return  date('Y-m-d', strtotime('+ ' . $num . 'days'));
 };

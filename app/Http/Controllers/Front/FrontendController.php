@@ -665,13 +665,27 @@ class FrontendController extends Controller
     public function sendquote(Request $request)
     {
 
+
+       dd($request->all());
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
             $currentLang = Language::where('is_default', 1)->first();
         }
-        $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
 
+
+
+        DB::table('remind')->insert([
+            'Email' => $request->input('Email'),
+            'Today' => $request->input('Today'),
+            'Reminders' => $request->input('Reminders'),
+            'details' => $request->input('details'),
+            'status' => $request->input('status'),
+                    ]);
+
+                    
+        $status = intval(DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('status')) + 1;
+        num_day($request->input('id_bookin'));
         DB::table('Reservation')
             ->where('id', $request->input('id_bookin'))
             ->update([
