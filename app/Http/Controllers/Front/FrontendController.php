@@ -771,16 +771,18 @@ class FrontendController extends Controller
         }
 
         $data = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('data');
+      //  dd($data);
         $From = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('From');
         $to = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('to');
         $Time = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('Time');
-        $data = day__($data) . "-" . $data . "-" . "&nbsp;" . $From . "&nbsp;" . $to;
+        $History = day__($data) . " - " . $data . " - " . "" . $From . "&nbsp;" . $to;
+   
         DB::table('remind')->insert([
             'Email' => $request->input('email'),
             'Today' => day__($data),
             'Reminders' => data_sub($data),
             'details' => $request->input('details'),
-            'History' => $data,
+            'History' => $History,
             'Noun' => $request->input('name'),
             'Detection_type' => $request->input('Consaltion_type'),
         ]);
