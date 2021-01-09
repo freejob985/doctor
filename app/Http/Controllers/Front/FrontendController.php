@@ -775,7 +775,7 @@ class FrontendController extends Controller
         $From = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('From');
         $to = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('to');
         $Time = DB::table('Reservation')->where('id', $request->input('id_bookin'))->value('Time');
-        $History ="Day ". day__($data) . " - " ."Dated". $data . " - " . "From time" . $From . "&nbsp;" . $to;
+        $History =" &nbsp; Day &nbsp; ". day__($data) . " - " ." &nbsp; Dated &nbsp;". $data . " - " . "&nbsp; From time &nbsp;" . $From . "&nbsp;" . $to;
    
         DB::table('remind')->insert([
             'Email' => $request->input('email'),
