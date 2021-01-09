@@ -287,11 +287,12 @@ class QuoteController extends Controller
         DB::table('Reservation')
         ->where('id', $id)
         ->update([
-            'day' => $request->input('day'),
+            'day' => day__($request->input('day')),
             'Number' => $request->input('Number'),
             'From' => $request->input('From'),
             'to' => $request->input('to'),
             'Time' => $request->input('Time'),
+            'data' => $request->input('day'),
         ]);
         return redirect()->back()->with('alert-success', 'The appointment has been modified');
 
