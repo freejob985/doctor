@@ -729,11 +729,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
         })->name('admin.Reservation.default');
 
+
+
+
+        
+
         Route::get('default/Reservation/{id}', function ($id) {
           DB::table('Reservation')->where('id',$id)->update(['status' => "0"]);
           return redirect()->back();
   
           })->name('admin.Reservation.default.edit');
+
+
+
+          
+        Route::get('default/Reservation/{id}', function ($id) {
+            DB::table('Reservation')->where('id',$id)->update(['status' => "0"]);
+            return redirect()->back();
+    
+            })->name('admin.Reservation.default.edit');
+            
 
     });
 
