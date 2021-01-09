@@ -46,25 +46,23 @@
             <form action="{{ route('admin.Reservation.updata', [$reservation->id]) }}" method="POST" enctype="multipart/form-data">
               @csrf
               {{-- ##########################(from bg)################################### --}}
+    
+
               <div class="form-row">
-                <select class="form-control" name="day" data-show-subtext="true">
-                  <option {{ ( $reservation->day == 'Saturday') ? 'selected' : '' }}>Saturday</option>
-                  <option {{ ( $reservation->day == 'Sunday') ? 'selected' : '' }}>Sunday</option>
-                  <option  {{ ( $reservation->day == 'Monday') ? 'selected' : '' }} >Monday</option>
-                  <option  {{ ( $reservation->day == 'Tuesday') ? 'selected' : '' }} >Tuesday</option>
-                  <option  {{ ( $reservation->day == 'Wednesday') ? 'selected' : '' }} >Wednesday</option>
-                  <option  {{ ( $reservation->day == 'Thursday') ? 'selected' : '' }} >Thursday</option>
-                  <option  {{ ( $reservation->day == 'Friday') ? 'selected' : '' }} >Friday</option>
-                </select>
-                @if ($errors->has('day'))
-                <span class="helper-text" data-error="wrong" data-success="right">{{ $errors->first('day') }}</span>
-                @endif
+                <div class="col-md-12 mb-4">
+                  <label for="day">data</label>
+                  <input type="date" placeholder="Please enter data" class="form-control" name="day" id="day"
+                    placeholder="" value="{{ $reservation->day  }}">
+                  @if ($errors->has('day'))
+                  <div class="invalid-feedback">
+                    {{ $errors->first('day') }}
+                  </div>
+                  @endif
+                </div>
               </div>
-              {{ $reservation->day}}
 
 
 
-{{ $reservation->Time}}
 
               {{-- ############################################################# --}}
               <div class="form-row">
