@@ -740,11 +740,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
                 $array['reminder']= "You are reminded of the agreed date";
                 $array['details']= $item->details;
                 
-
+                dd($array);
 
                 
                         }
-            dd($array);
+         
             return redirect()->back();
         })->name('admin.remind');
 
