@@ -739,7 +739,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
                 $array['Title']= "Date reminder";
                 $array['reminder']= "You are reminded of the agreed date";
                 $array['details']= $item->details;
-                
+         
+   
+ 
+     		Mail::send('remind', ['array' => $array], function($m) use ($array){
+					$m->to( $array['Email'])->subject('info@e-learningzone.net')->getSwiftMessage()
+					->getHeaders()
+					->addTextHeader('x-mailgun-native-send', 'true');
+					   $m->from('info@e-learningzone.net','e-learningzone');
+					
+					
+					
+				});
+				
                 dd($array);
 
                 
