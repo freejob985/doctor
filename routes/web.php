@@ -743,10 +743,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
    
  
      		Mail::send('remind', ['array' => $array], function($m) use ($array){
-					$m->to( $array['Email'])->subject('info@e-learningzone.net')->getSwiftMessage()
+					$m->to( $array['Email'])->subject('alriyadah@sub.alriyadah-tr.com')->getSwiftMessage()
 					->getHeaders()
 					->addTextHeader('x-mailgun-native-send', 'true');
-					   $m->from('info@e-learningzone.net','e-learningzone');
+					   $m->from('alriyadah@sub.alriyadah-tr.com','alriyadah');
 					
 					
 					
