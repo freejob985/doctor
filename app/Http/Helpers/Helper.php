@@ -22,6 +22,9 @@ function remind(){
         $array['Title'] = "Date reminder";
         $array['reminder'] = "You are reminded of the agreed date";
         $array['details'] = $item->details;
+        $array['History'] = $item->History;
+        $array['Noun'] ="Dear: ". $item->Noun;
+        $array['Detection_type'] = $item->Detection_type;
         Mail::send('remind', ['array' => $array], function ($m) use ($array) {
             $m->to($array['Email'])->subject('alriyadah@sub.alriyadah-tr.com')->getSwiftMessage()
                 ->getHeaders()
