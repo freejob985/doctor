@@ -186,26 +186,58 @@
                         </div>
                     </div>
                     <div class="col-lg-6 wow slideInRight">
-                        <div class="finlance_icon_box">
-                            @foreach ($points as $key => $point)
-                                <div class="icon_list d-flex">
-                                    <div class="icon">
-                                        <i class="{{$point->icon}}"></i>
-                                    </div>
-                                    <div class="text">
-                                        <h3>{{convertUtf8($point->title)}}</h3>
-                                        <p>
-                                           @if (strlen(convertUtf8($point->short_text)) > 150)
-                                               {{substr(convertUtf8($point->short_text), 0, 150)}}<span style="display: none;">{{substr(convertUtf8($point->short_text), 150)}}</span>
-                                               <a href="#" class="see-more">see more...</a>
-                                           @else
-                                               {{convertUtf8($point->short_text)}}
-                                           @endif
-                                       </p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+                        <table class="table table-bordered">
+                            <tbody>
+                              <tr style="
+                                background: #29282f;
+                                color: white;
+                                text-align: center;
+                                text-transform: uppercase;
+                                font-weight: 800;
+                            ">
+                                <td scope="col">day</td>
+                                <td scope="col">From</td>
+                                <td scope="col">to</td>
+                                <td scope="col">Time</td>
+                                <td scope="col">the status</td>
+                  
+                              </tr>
+                              <tr>
+                                @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
+                              <tr style="
+                              text-align: center;
+                              font-size: 16px;
+                              font-weight: bolder;
+                          ">
+                                <td>{{convertUtf8($quote->day)}}</td>
+                                <td>{{convertUtf8($quote->From)}}</td>
+                                <td>{{convertUtf8($quote->to)}}</td>
+                                <td>{{convertUtf8($quote->Time)}}</td>
+                                <td>
+                                  @php
+                                  $Available=$quote->status;
+                                  if($Available==$quote->Number){
+                                  $status="Unavailable";
+                                  $bootstrap="btn btn-danger btn-xs";
+                                  $route="#" ;
+                                  
+                                  }else{
+                                  $status="Available";
+                                  $bootstrap="btn btn-success btn-xs";
+                                  $route= route('front.quote.send', ['id'=>$quote->id]) ;
+                  
+                                  }
+                                  @endphp
+                                  <a type="button" class="{{ $bootstrap }}" href="{{ $route }}">{{ $status }}</button>
+                                </td>
+                  
+                              </tr>
+                  
+                              @endforeach
+                              </tr>
+                  
+                            </tbody>
+                          </table>
                     </div>
                 </div>
             </div>
