@@ -1,6 +1,33 @@
 @extends('admin.layout')
 
 @section('content')
+<style>
+  input {
+    position: relative;
+    width: 150px; height: 20px;
+    color: white;
+}
+
+input:before {
+    position: absolute;
+    top: 3px; left: 3px;
+    content: attr(data-date);
+    display: inline-block;
+    color: black;
+}
+
+input::-webkit-datetime-edit, input::-webkit-inner-spin-button, input::-webkit-clear-button {
+    display: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    color: black;
+    opacity: 1;
+}
+</style>
 <div class="page-header">
   <h4 class="page-title">Quotes</h4>
   <ul class="breadcrumbs">
@@ -51,7 +78,7 @@
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="day">data</label>
-                  <input type="date" placeholder="Please enter data" class="form-control" onclick="mydate();" name="day" id="ndt"
+                  <input type="date" placeholder="Please enter data" class="form-control" onclick="mydate();" name="day" id="day"
                     placeholder="" value="{{Request::old('day')}}">
                   @if ($errors->has('day'))
                   <div class="invalid-feedback">
@@ -176,12 +203,17 @@
     </div>
   </div>
 </div>
-<script>
-  function mydate() {
-    //alert("");
-    document.getElementById("dt").hidden = false;
-    document.getElementById("ndt").hidden = true;
-  }
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script>
+  $("input").on("change", function() {
+    this.setAttribute(
+        "data-date",
+        moment(this.value, "YYYY-MM-DD")
+        .format( this.getAttribute("data-date-format") )
+    )
+}).trigger("change")
 </script>
+  
+
 @endsection
