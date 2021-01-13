@@ -51,7 +51,7 @@
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="day">data</label>
-                  <input type="date" placeholder="Please enter data" class="form-control" name="day" id="day"
+                  <input type="date" placeholder="Please enter data" class="form-control" data-date-format="DD-YYYY-MM" name="day" id="day"
                     placeholder="" value="{{Request::old('day')}}">
                   @if ($errors->has('day'))
                   <div class="invalid-feedback">
