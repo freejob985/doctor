@@ -51,7 +51,7 @@
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="day">data</label>
-                  <input type="date" placeholder="Please enter data" class="form-control" data-date-format="DD-YYYY-MM" name="day" id="day"
+                  <input type="date" placeholder="Please enter data" class="form-control" onclick="mydate();" name="day" id="ndt"
                     placeholder="" value="{{Request::old('day')}}">
                   @if ($errors->has('day'))
                   <div class="invalid-feedback">
@@ -176,4 +176,12 @@
     </div>
   </div>
 </div>
+<script>
+  function mydate() {
+    //alert("");
+    document.getElementById("dt").hidden = false;
+    document.getElementById("ndt").hidden = true;
+  }
+
+</script>
 @endsection
