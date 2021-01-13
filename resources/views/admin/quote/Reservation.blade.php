@@ -45,17 +45,17 @@
             <form action="{{ route('admin.Reservation.add') }}" method="POST" enctype="multipart/form-data">
               @csrf
               {{-- ##########################(from bg)################################### --}}
-   
+
 
 
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="day">data</label>
-                  <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y"  name="day" id ="date_input"
-                    placeholder="" value="{{Request::old('day')}}">
+                  <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y" name="day"
+                    id="date_input" placeholder="" value="{{Request::old('day')}}">
 
-                   
-<span class="datepicker_label" style="pointer-events: none;"></span>
+
+                  <span class="datepicker_label" style="pointer-events: none;"></span>
                   @if ($errors->has('day'))
                   <div class="invalid-feedback">
                     {{ $errors->first('day') }}
@@ -181,5 +181,17 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+<script>
+
+
+
+       <script>
+        $(function () {
+          $("#date_input").on("change", function () {
+            $(this).css("color", "rgba(0,0,0,0)").siblings(".datepicker_label").css({ "text-align":"center", position: "absolute",left: "10px", top:"14px",width:$(this).width()}).text($(this).val().length == 0 ? "" : ($.datepicker.formatDate($(this).attr("dateformat"), new Date($(this).val()))));
+               });
+        });
+    </script>
+</script>
 
 @endsection
