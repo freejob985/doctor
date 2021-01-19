@@ -52,7 +52,7 @@
         
           <div class="row">
             <div class="col-lg-4">
-              <strong style="text-transform: capitalize;">Reservation number:</strong>
+              <strong style="text-transform: capitalize;">Booked with a date:</strong>
             </div>
             <div class="col-lg-8">
               {{convertUtf8($quote->generateRandomString)}}
