@@ -1,5 +1,6 @@
-
-        @if (count($reservation)>0)
+<div class="container">
+    
+    @if (count($reservation)>0)
     
     
 <div class="col-lg-12">
@@ -62,3 +63,4 @@
   </div>
 
   @endif
+</div>
