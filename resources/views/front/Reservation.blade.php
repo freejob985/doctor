@@ -10,9 +10,9 @@
   .img-responsive {
     margin: 0 auto !important;
 }
-div#img {
+{{--  div#img {
   margin-top: -24%;
-}
+}  --}}
 
 </style>
 @section('content')
