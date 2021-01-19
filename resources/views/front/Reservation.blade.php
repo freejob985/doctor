@@ -8,7 +8,7 @@
 @section('meta-description', "$be->quote_meta_description")
 <style>
   .img-responsive {
-    margin: 0 auto;
+    margin: 0 auto !important;
 }
 </style>
 @section('content')
