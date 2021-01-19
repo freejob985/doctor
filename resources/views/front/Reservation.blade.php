@@ -54,7 +54,7 @@
   </div>
 </form>
 <div id="img">
-  <img class="img-responsive" src="https://lh3.googleusercontent.com/proxy/L1-n_ihYLy9JZPvI4bOqYXxBC82m98wOHiHAceGlDa9eqVv0SfpJeiaMURvftIPIJBiP2uZicYYO030sJUw" alt="Chania">
+  <img class="img-responsive center-block" src="https://lh3.googleusercontent.com/proxy/L1-n_ihYLy9JZPvI4bOqYXxBC82m98wOHiHAceGlDa9eqVv0SfpJeiaMURvftIPIJBiP2uZicYYO030sJUw" alt="Chania">
 </div>
 
 <!--   quote area start   -->
