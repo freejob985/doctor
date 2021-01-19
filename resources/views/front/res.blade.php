@@ -13,7 +13,6 @@
           text-transform: uppercase;
           font-weight: 800;
       ">
-          <td scope="col">day</td>
           <td scope="col">From</td>
           <td scope="col">to</td>
           <td scope="col">the status</td>
@@ -26,7 +25,6 @@
         font-size: 16px;
         font-weight: bolder;
     ">
-          <td>{{convertUtf8($quote->day)}}</td>
           <td>{{convertUtf8($quote->From)}}</td>
           <td>{{convertUtf8($quote->to)}}</td>
           <td>
