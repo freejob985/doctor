@@ -42,7 +42,12 @@
       <div class="card-body">
         <div class="row">
           <div class="col-lg-12">
-
+           
+       
+            
+           
+        
+            
             <form action="{{ route('admin.Reservation.updata', [$reservation->id]) }}" method="POST" enctype="multipart/form-data">
               @csrf
               {{-- ##########################(from bg)################################### --}}
@@ -51,7 +56,7 @@
                 <div class="col-md-12 mb-4">
                   <label for="day">data</label>
                   <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y" name="day"
-                    id="date_input" placeholder="" value="{{Request::old('day')}}">
+                    id="date_input" placeholder="" value=" {{ $reservation->day}}">
 
 
                   <span class="datepicker_label" style="pointer-events: none;"></span>
@@ -67,7 +72,7 @@
                 <div class="col-md-12 mb-4">
                   <label for="Number">Number</label>
                   <input type="number" placeholder="Please enter data" class="form-control" name="Number" id="Number"
-                    placeholder="" value="{{Request::old('Number')}}">
+                    placeholder="" value="     {{ $reservation->Number}}">
                   @if ($errors->has('Number'))
                   <div class="invalid-feedback">
                     {{ $errors->first('Number') }}
@@ -80,7 +85,7 @@
                 <div class="col-md-12 mb-4">
                   <label for="From">From</label>
                   <input type="time" placeholder="Please enter data" class="form-control" name="From" id="From"
-                    placeholder="" value="{{Request::old('From')}}">
+                    placeholder="" value="{{ $reservation->From}}">
                   @if ($errors->has('From'))
                   <div class="invalid-feedback">
                     {{ $errors->first('From') }}
@@ -93,7 +98,7 @@
                 <div class="col-md-12 mb-4">
                   <label for="to">to</label>
                   <input type="time" placeholder="Please enter data" class="form-control" name="to" id="to"
-                    placeholder="" value="{{Request::old('to')}}">
+                    placeholder="" value=" {{ $reservation->to}}">
                   @if ($errors->has('to'))
                   <div class="invalid-feedback">
                     {{ $errors->first('to') }}
@@ -117,8 +122,7 @@
               <br>
               <br>
               {{-- ##########################(end bg)################################### --}}
-              <input type="submit" style="background: #011a25;" class="btn btn-primary btn-large btn-block"
-                value="Add a new appointment" />
+           
               <br>
               <br>
               {{-- ##########################(end bg)################################### --}}
