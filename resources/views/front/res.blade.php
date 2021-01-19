@@ -59,7 +59,7 @@
   @else
 
   <div id="img" class="text-center">
-    <img class="img-responsive center-block" src="https://cdn.dribbble.com/users/1518535/screenshots/6665493/20-6-2019-404-page-not-found-1.gif" alt="Chania">
+    <img class="img-responsive center-block" src="https://www.qstams.com/images/no_result_optimize.gif" alt="Chania">
   </div>
 
   @endif
