@@ -662,8 +662,13 @@ class FrontendController extends Controller
 
         }
     }
-    public function data_send(Request $request){
-        dd($request->all());
+    public function data_send(Request $request)
+    {
+        // dd($request->all());
+
+        $reservation = DB::table('Reservation')->where('data', $request->input('data'))->get();
+        dd($reservation);
+
     }
 
     public function sendquote(Request $request)
