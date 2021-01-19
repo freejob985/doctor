@@ -742,7 +742,7 @@ class FrontendController extends Controller
         $quote->name = $request->name;
         $quote->email = $request->email;
         $quote->fields = $jsonfields;
-        $quote->generateRandomString = $request->generateRandomString;
+        $quote->generateRandomString = $request->Appointment;
 
         if ($request->hasFile('nda')) {
             $filename = uniqid() . '.' . $nda->getClientOriginalExtension();
