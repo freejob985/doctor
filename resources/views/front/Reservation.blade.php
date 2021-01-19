@@ -115,7 +115,7 @@
 <script>
   $(document).ready(function(){
           $(".day").change(function(){
-         var day=   $(".day").text();
+         var day=   $(".day").value();
          alert(day);
             jQuery.ajax({
               beforeSend: function (xhr) { // Add this line
