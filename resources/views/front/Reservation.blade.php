@@ -45,15 +45,9 @@
       <div class="form-row">
         <div class="col-md-12 mb-4">
           <input type="date" placeholder="Please enter data" class="form-control day" dateformat="d M y" name="day"
-            id="date_input" placeholder="" value="{{Request::old('day')}}" pattern="\d{4}-\d{2}-\d{2}"  placeholder="dd-mm-yyyy"  min="1997-01-01" max="2030-12-31">
+            id="date_input" placeholder="" value="{{Request::old('day')}}" pattern="DD MMMM YYYY"  placeholder="dd-mm-yyyy"  min="1997-01-01" max="2030-12-31">
 
-            <input type="date" name="begin" 
-            placeholder="dd-mm-yyyy" value=""
-            min="1997-01-01" max="2030-12-31"> 
-            <input type="date" data-date="" data-date-format="DD MMMM YYYY" value="2015-08-09">
-
-
-
+            
           <span class="datepicker_label" style="pointer-events: none;"></span>
           @if ($errors->has('day'))
           <div class="invalid-feedback">
@@ -82,13 +76,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
   $(document).ready(function(){
-    $("input").on("change", function() {
-      this.setAttribute(
-          "data-date",
-          moment(this.value, "YYYY-MM-DD")
-          .format( this.getAttribute("data-date-format") )
-      )
-  }).trigger("change")
           $(".day").change(function(){
           var day=  this.value;
           var ajax_url = '{{ route('data.send') }}';
@@ -109,7 +96,6 @@
 
           });
         });
-        
 </script>
 
 <!--   quote area end   -->
