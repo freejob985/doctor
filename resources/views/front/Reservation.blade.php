@@ -35,7 +35,7 @@
     <div class="container">
       <div class="form-row">
         <div class="col-md-12 mb-4">
-          <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y" name="day"
+          <input type="date" placeholder="Please enter data" class="form-control day" dateformat="d M y" name="day"
             id="date_input" placeholder="" value="{{Request::old('day')}}">
           <span class="datepicker_label" style="pointer-events: none;"></span>
           @if ($errors->has('day'))
@@ -110,5 +110,15 @@
     </div>
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+          $(".day").change(function(){
+            $(this).hide();
+          });
+        });
+</script>
+
 <!--   quote area end   -->
 @endsection
