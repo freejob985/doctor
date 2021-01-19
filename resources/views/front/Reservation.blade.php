@@ -116,7 +116,19 @@
   $(document).ready(function(){
           $(".day").change(function(){
           var day=  this.value;
-alert(day);
+          var ajax_url = {{ route('data.send') }}
+
+          jQuery.ajax({
+            beforeSend: function (xhr) { // Add this line
+                    xhr.setRequestHeader('X-CSRF-Token', $('[name="_csrfToken"]').val());
+             },
+            url: ajax_url,
+            type: "POST",
+            data: {"day":day,"_token": "f4YGvNxEM3C5X4ZRsNVIQCwNWHX8H6bVtHXY8VlE"},
+            success: function (res) {
+              window.location.reload();
+            },
+          });
 
           });
         });
