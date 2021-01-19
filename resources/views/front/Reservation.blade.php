@@ -124,7 +124,7 @@
              },
             url: ajax_url,
             type: "POST",
-            data: {"day":day,"_token": {{ csrf_token() }}},
+            data: {"day":day,"_token": '{{ csrf_token() }}'},
             success: function (res) {
               window.location.reload();
             },
