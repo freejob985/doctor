@@ -117,7 +117,6 @@
           $(".day").change(function(){
           var day=  this.value;
           var ajax_url = '{{ route('data.send') }}';
-
           jQuery.ajax({
             beforeSend: function (xhr) { // Add this line
                     xhr.setRequestHeader('X-CSRF-Token', $('[name="_csrfToken"]').val());
