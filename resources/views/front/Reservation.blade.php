@@ -29,25 +29,26 @@
     style="background-color: #{{$be->breadcrumb_overlay_color}};opacity: {{$be->breadcrumb_overlay_opacity}};"></div>
 </div>
 <!--   breadcrumb area end    -->
-<div class="quote-area pt-115 pb-115">
-  <div class="container">
-    <div class="form-row">
-      <div class="col-md-12 mb-4">
-        <label for="day">data</label>
-        <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y" name="day"
-          id="date_input" placeholder="" value="{{Request::old('day')}}">
-
-
-        <span class="datepicker_label" style="pointer-events: none;"></span>
-        @if ($errors->has('day'))
-        <div class="invalid-feedback">
-          {{ $errors->first('day') }}
+<form method="POST" action="{{ route('data.send') }}" >
+  @csrf
+  <div class="quote-area pt-115 pb-115">
+    <div class="container">
+      <div class="form-row">
+        <div class="col-md-12 mb-4">
+          <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y" name="day"
+            id="date_input" placeholder="" value="{{Request::old('day')}}">
+          <span class="datepicker_label" style="pointer-events: none;"></span>
+          @if ($errors->has('day'))
+          <div class="invalid-feedback">
+            {{ $errors->first('day') }}
+          </div>
+          @endif
         </div>
-        @endif
-      </div>
-    </div>   
+      </div>   
+    </div>
   </div>
-</div>
+</form>
+
 
 <!--   quote area start   -->
 <div class="quote-area pt-115 pb-115">

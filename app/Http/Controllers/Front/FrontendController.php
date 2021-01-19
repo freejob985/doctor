@@ -662,6 +662,9 @@ class FrontendController extends Controller
 
         }
     }
+    public function data_send(Request $request){
+        dd($request->all());
+    }
 
     public function sendquote(Request $request)
     {
