@@ -53,7 +53,7 @@
     </div>
   </div>
 </form>
-<div id="img" class="text-center">
+<div id="img" class="text-center" style="display: none">
   <img class="img-responsive center-block" src="https://lh3.googleusercontent.com/proxy/L1-n_ihYLy9JZPvI4bOqYXxBC82m98wOHiHAceGlDa9eqVv0SfpJeiaMURvftIPIJBiP2uZicYYO030sJUw" alt="Chania">
 </div>
 
@@ -125,14 +125,16 @@
           var day=  this.value;
           var ajax_url = '{{ route('data.send') }}';
           jQuery.ajax({
-            beforeSend: function (xhr) { // Add this line
+            beforeSend: function (xhr) { 
+              $('.text-center').show();
+              // Add this line
                     xhr.setRequestHeader('X-CSRF-Token', $('[name="_csrfToken"]').val());
              },
             url: ajax_url,
             type: "POST",
             data: {"day":day,"_token": '{{ csrf_token() }}'},
             success: function (res) {
-              window.location.reload();
+              $('.text-center').hide();
             },
           });
 
