@@ -66,7 +66,7 @@
                     <th scope="col">Number</th>
                     <th scope="col">From</th>
                     <th scope="col">to</th>
-                    <th scope="col">Time</th>
+                    
                     <th scope="col"></th>
                   </tr>
                 </thead>
@@ -80,9 +80,7 @@
                     <td>{{convertUtf8($quote->Number)}}</td>
                     <td>{{convertUtf8($quote->From)}}</td>
                     <td>{{convertUtf8($quote->to)}}</td>
-                    <td style="
-                    display: none;
-                ">{{convertUtf8($quote->Time)}}</td>
+                  
                     <td>
                     </td>
                     <td>
