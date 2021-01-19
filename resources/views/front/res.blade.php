@@ -1,3 +1,7 @@
+
+        @if (count($reservation)>0)
+    
+    
 <div class="col-lg-12">
     <table class="table table-bordered">
       <tbody>
@@ -50,3 +54,11 @@
       </tbody>
     </table>
   </div>
+
+  @else
+
+  <div id="img" class="text-center">
+    <img class="img-responsive center-block" src="https://cdn.dribbble.com/users/1518535/screenshots/6665493/20-6-2019-404-page-not-found-1.gif" alt="Chania">
+  </div>
+
+  @endif
