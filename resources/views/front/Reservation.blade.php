@@ -124,7 +124,7 @@
              },
             url: ajax_url,
             type: "POST",
-            data: {"day":day,"_token": "f4YGvNxEM3C5X4ZRsNVIQCwNWHX8H6bVtHXY8VlE"},
+            data: {"day":day,"_token": {{ csrf_token() }}},
             success: function (res) {
               window.location.reload();
             },
