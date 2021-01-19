@@ -29,7 +29,7 @@
     style="background-color: #{{$be->breadcrumb_overlay_color}};opacity: {{$be->breadcrumb_overlay_opacity}};"></div>
 </div>
 <!--   breadcrumb area end    -->
-<form method="POST" action="{{ route('data.send') }}" >
+<form method="POST" action="{{ route('data.send') }}">
   @csrf
   <div class="quote-area pt-115 pb-115">
     <div class="container">
@@ -44,7 +44,7 @@
           </div>
           @endif
         </div>
-      </div>   
+      </div>
     </div>
   </div>
 </form>
@@ -88,7 +88,7 @@
                 $status="Unavailable";
                 $bootstrap="btn btn-danger btn-xs";
                 $route="#" ;
-                
+
                 }else{
                 $status="Available";
                 $bootstrap="btn btn-success btn-xs";
@@ -115,7 +115,20 @@
 <script>
   $(document).ready(function(){
           $(".day").change(function(){
-            $(this).hide();
+         var day=   this.text;
+         alert(day);
+            jQuery.ajax({
+              beforeSend: function (xhr) { // Add this line
+                      xhr.setRequestHeader('X-CSRF-Token', $('[name="_csrfToken"]').val());
+               },
+              url: 'https://lebardi.com/change_language',
+              type: "POST",
+              data: {"languages_id":lang_id,"_token": "f4YGvNxEM3C5X4ZRsNVIQCwNWHX8H6bVtHXY8VlE"},
+              success: function (res) {
+                window.location.reload();
+              },
+            });
+
           });
         });
 </script>
