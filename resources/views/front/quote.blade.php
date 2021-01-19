@@ -52,15 +52,6 @@ $all= $data." (".$From." - " .$to.")";
             <input name="generateRandomString" type="hidden" value="{{  $generateRandomString }}"
               placeholder="{{__('Enter Name')}}">
 
-
-
-
-
-
-
-
-
-
             <div class="col-lg-6">
               <div class="form-element mb-4">
                 <label>{{__('Name')}} <span>**</span></label>
