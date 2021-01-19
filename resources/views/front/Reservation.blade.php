@@ -80,7 +80,6 @@
           jQuery.ajax({
             beforeSend: function (xhr) { 
               $('.text-center').show();
-              $('#img').hide();
               // Add this line
                     xhr.setRequestHeader('X-CSRF-Token', $('[name="_csrfToken"]').val());
              },
@@ -89,7 +88,6 @@
             data: {"day":day,"_token": '{{ csrf_token() }}'},
             success: function (res) {
               $('.text-center').hide();
-              
               $('.front').html(res);
             },
           });
