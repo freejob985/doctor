@@ -667,7 +667,7 @@ class FrontendController extends Controller
         // dd($request->all());
 
         $reservation = DB::table('Reservation')->where('data', $request->input('data'))->get();
-        dd($reservation);
+        dd($request->input('data'));
 
     }
 
