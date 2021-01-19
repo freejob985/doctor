@@ -15,7 +15,7 @@
 
         </tr>
         <tr>
-          @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
+          @foreach($reservation as $quote)
         <tr style="
         text-align: center;
         font-size: 16px;
