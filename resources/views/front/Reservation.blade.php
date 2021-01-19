@@ -49,7 +49,9 @@
     </div>
   </div>
 </form>
-
+<div id="img">
+  <img class="img-responsive" src="https://lh3.googleusercontent.com/proxy/L1-n_ihYLy9JZPvI4bOqYXxBC82m98wOHiHAceGlDa9eqVv0SfpJeiaMURvftIPIJBiP2uZicYYO030sJUw" alt="Chania">
+</div>
 
 <!--   quote area start   -->
 <div class="quote-area pt-115 pb-115">
