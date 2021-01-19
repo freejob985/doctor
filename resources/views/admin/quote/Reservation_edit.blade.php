@@ -47,12 +47,14 @@
               @csrf
               {{-- ##########################(from bg)################################### --}}
     
-
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="day">data</label>
-                  <input type="date" placeholder="Please enter data" class="form-control" name="day" id="day"
-                    placeholder="" value="{{ $reservation->day  }}">
+                  <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y" name="day"
+                    id="date_input" placeholder="" value="{{Request::old('day')}}">
+
+
+                  <span class="datepicker_label" style="pointer-events: none;"></span>
                   @if ($errors->has('day'))
                   <div class="invalid-feedback">
                     {{ $errors->first('day') }}
@@ -60,16 +62,12 @@
                   @endif
                 </div>
               </div>
-
-
-
-
               {{-- ############################################################# --}}
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="Number">Number</label>
                   <input type="number" placeholder="Please enter data" class="form-control" name="Number" id="Number"
-                    placeholder="" value="{{ $reservation->Number}}">
+                    placeholder="" value="{{Request::old('Number')}}">
                   @if ($errors->has('Number'))
                   <div class="invalid-feedback">
                     {{ $errors->first('Number') }}
@@ -81,8 +79,8 @@
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="From">From</label>
-                  <input type="number" placeholder="Please enter data" class="form-control" name="From" id="From"
-                    placeholder="" value="{{ $reservation->From}}">
+                  <input type="time" placeholder="Please enter data" class="form-control" name="From" id="From"
+                    placeholder="" value="{{Request::old('From')}}">
                   @if ($errors->has('From'))
                   <div class="invalid-feedback">
                     {{ $errors->first('From') }}
@@ -94,8 +92,8 @@
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="to">to</label>
-                  <input type="number" placeholder="Please enter data" class="form-control" name="to" id="to"
-                    placeholder="" value="{{ $reservation->to}}">
+                  <input type="time" placeholder="Please enter data" class="form-control" name="to" id="to"
+                    placeholder="" value="{{Request::old('to')}}">
                   @if ($errors->has('to'))
                   <div class="invalid-feedback">
                     {{ $errors->first('to') }}
@@ -104,16 +102,23 @@
                 </div>
               </div>
               {{-- ############################################################# --}}
-              <div class="form-row">
+              <div class="form-row" style="
+              display: none;
+          ">
                 <select class="form-control" name="Time" data-show-subtext="true">
-                  <option {{ ( $reservation->Time == 'AM') ? 'selected' : '' }} >AM</option>
-                  <option {{ ( $reservation->Time == 'PM') ? 'selected' : '' }}>PM</option>
+                  <option>AM</option>
+                  <option>PM</option>
                 </select>
                 @if ($errors->has('Time'))
                 <span class="helper-text" data-error="wrong" data-success="right">{{ $errors->first('Time') }}</span>
                 @endif
               </div>
               {{-- ############################################################# --}}
+              <br>
+              <br>
+              {{-- ##########################(end bg)################################### --}}
+              <input type="submit" style="background: #011a25;" class="btn btn-primary btn-large btn-block"
+                value="Add a new appointment" />
               <br>
               <br>
               {{-- ##########################(end bg)################################### --}}
