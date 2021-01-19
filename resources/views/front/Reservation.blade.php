@@ -116,7 +116,7 @@
   $(document).ready(function(){
           $(".day").change(function(){
           var day=  this.value;
-          var ajax_url = {{ route('data.send') }}
+          var ajax_url = '{{ route('data.send') }}';
 
           jQuery.ajax({
             beforeSend: function (xhr) { // Add this line
