@@ -45,7 +45,7 @@
       <div class="form-row">
         <div class="col-md-12 mb-4">
           <input type="date" placeholder="Please enter data" class="form-control day" dateformat="d M y" name="day"
-            id="date_input" placeholder="" value="{{Request::old('day')}}" pattern="\d{4}-\d{2}-\d{2}">
+            id="date_input" placeholder="" value="{{Request::old('day')}}" pattern="\d{4}-\d{2}-\d{2}"  placeholder="dd-mm-yyyy"  min="1997-01-01" max="2030-12-31">
           <span class="datepicker_label" style="pointer-events: none;"></span>
           @if ($errors->has('day'))
           <div class="invalid-feedback">
