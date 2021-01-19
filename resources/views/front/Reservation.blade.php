@@ -8,6 +8,7 @@
 @section('meta-description', "$be->quote_meta_description")
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!--   breadcrumb area start   -->
 <div class="breadcrumb-area"
   style="background-image: url('{{asset('assets/front/img/' . $bs->breadcrumb)}}');background-size:cover;">
