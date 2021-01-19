@@ -80,7 +80,7 @@
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="From">From</label>
-                  <input type="number" placeholder="Please enter data" class="form-control" name="From" id="From"
+                  <input type="time" placeholder="Please enter data" class="form-control" name="From" id="From"
                     placeholder="" value="{{Request::old('From')}}">
                   @if ($errors->has('From'))
                   <div class="invalid-feedback">
@@ -93,7 +93,7 @@
               <div class="form-row">
                 <div class="col-md-12 mb-4">
                   <label for="to">to</label>
-                  <input type="number" placeholder="Please enter data" class="form-control" name="to" id="to"
+                  <input type="time" placeholder="Please enter data" class="form-control" name="to" id="to"
                     placeholder="" value="{{Request::old('to')}}">
                   @if ($errors->has('to'))
                   <div class="invalid-feedback">
