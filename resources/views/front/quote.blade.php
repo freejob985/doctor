@@ -62,7 +62,7 @@
             $all=  $data."(".$From."-" .$to.")";
             @endphp
             <div class="form-element mb-4">
-                <input name="Appointment" type="hidden" value="{{  $$all }}" placeholder="{{__('Enter Name')}}">
+                <input name="Appointment" type="hidden" value="{{  $all }}" placeholder="{{__('Enter Name')}}">
             </div>
         </div>
 
