@@ -29,7 +29,11 @@
     style="background-color: #{{$be->breadcrumb_overlay_color}};opacity: {{$be->breadcrumb_overlay_opacity}};"></div>
 </div>
 <!--   breadcrumb area end    -->
-
+<div class="quote-area pt-115 pb-115">
+  <div class="container">
+    
+  </div>
+</div>
 
 <!--   quote area start   -->
 <div class="quote-area pt-115 pb-115">
@@ -49,7 +53,6 @@
               <td scope="col">day</td>
               <td scope="col">From</td>
               <td scope="col">to</td>
-              <td scope="col">Time</td>
               <td scope="col">the status</td>
 
             </tr>
@@ -63,7 +66,6 @@
               <td>{{convertUtf8($quote->day)}}</td>
               <td>{{convertUtf8($quote->From)}}</td>
               <td>{{convertUtf8($quote->to)}}</td>
-              <td>{{convertUtf8($quote->Time)}}</td>
               <td>
                 @php
                 $Available=$quote->status;
