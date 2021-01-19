@@ -1,3 +1,10 @@
+@php
+$data = DB::table('Reservation')->where('id',$id)->value('data');  
+$From = DB::table('Reservation')->where('id',$id)->value('From');  
+$to = DB::table('Reservation')->where('id',$id)->value('to');  
+$all=  $data."(".$From."-" .$to.")";
+@endphp
+
 @extends("front.$version.layout")
 
 @section('pagename')
@@ -38,33 +45,17 @@
           <form action="{{route('front.sendquote')}}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="row">
+          
+              <input name="Appointment" type="hidden" value="{{  $all }}" placeholder="{{__('Enter Name')}}">
+              <input name="id_bookin" type="hidden" value="{{  $id }}" placeholder="{{__('Enter Name')}}">
+              <input name="generateRandomString" type="hidden" value="{{  $generateRandomString }}" placeholder="{{__('Enter Name')}}">
 
 
+      
 
-              <div class="col-lg-6">
-                <div class="form-element mb-4">
-                    <input name="id_bookin" type="hidden" value="{{  $id }}" placeholder="{{__('Enter Name')}}">
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div class="form-element mb-4">
-                  <input name="generateRandomString" type="hidden" value="{{  $generateRandomString }}" placeholder="{{__('Enter Name')}}">
-              </div>
-          </div>
+      
 
 
-          <div class="col-lg-6">
-            @php
-            $data = DB::table('Reservation')->where('id',$id)->value('data');  
-            $From = DB::table('Reservation')->where('id',$id)->value('From');  
-            $to = DB::table('Reservation')->where('id',$id)->value('to');  
-            $all=  $data."(".$From."-" .$to.")";
-            @endphp
-            <div class="form-element mb-4">
-                <input name="Appointment" type="hidden" value="{{  $all }}" placeholder="{{__('Enter Name')}}">
-            </div>
-        </div>
 
 
 
