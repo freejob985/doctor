@@ -103,7 +103,9 @@
                 </div>
               </div>
               {{-- ############################################################# --}}
-              <div class="form-row">
+              <div class="form-row" style="
+              display: none;
+          ">
                 <select class="form-control" name="Time" data-show-subtext="true">
                   <option>AM</option>
                   <option>PM</option>
