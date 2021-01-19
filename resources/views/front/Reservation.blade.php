@@ -60,60 +60,9 @@
 <!--   quote area start   -->
 <div class="quote-area pt-115 pb-115">
   <div class="container">
-    <div class="row">
+    <div class="row front">
 
-      <div class="col-lg-12">
-        <table class="table table-bordered">
-          <tbody>
-            <tr style="
-              background: #29282f;
-              color: white;
-              text-align: center;
-              text-transform: uppercase;
-              font-weight: 800;
-          ">
-              <td scope="col">day</td>
-              <td scope="col">From</td>
-              <td scope="col">to</td>
-              <td scope="col">the status</td>
 
-            </tr>
-            <tr>
-              @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
-            <tr style="
-            text-align: center;
-            font-size: 16px;
-            font-weight: bolder;
-        ">
-              <td>{{convertUtf8($quote->day)}}</td>
-              <td>{{convertUtf8($quote->From)}}</td>
-              <td>{{convertUtf8($quote->to)}}</td>
-              <td>
-                @php
-                $Available=$quote->status;
-                if($Available==$quote->Number){
-                $status="Unavailable";
-                $bootstrap="btn btn-danger btn-xs";
-                $route="#" ;
-
-                }else{
-                $status="Available";
-                $bootstrap="btn btn-success btn-xs";
-                $route= route('front.quote.send', ['id'=>$quote->id]) ;
-
-                }
-                @endphp
-                <a type="button" class="{{ $bootstrap }}" href="{{ $route }}">{{ $status }}</button>
-              </td>
-
-            </tr>
-
-            @endforeach
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
     </div>
   </div>
 </div>
@@ -135,6 +84,7 @@
             data: {"day":day,"_token": '{{ csrf_token() }}'},
             success: function (res) {
               $('.text-center').hide();
+              $('.front').html(res);
             },
           });
 
