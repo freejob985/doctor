@@ -10,6 +10,10 @@
   .img-responsive {
     margin: 0 auto !important;
 }
+div#img {
+  margin-top: -24%;
+}
+
 </style>
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">

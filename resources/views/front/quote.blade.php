@@ -54,7 +54,14 @@
           </div>
 
 
-
+          <div class="col-lg-6">
+            @php
+            $day = DB::table('Reservation')->where('id',$request->input('id'))->value('day');  
+            @endphp
+            <div class="form-element mb-4">
+                <input name="Appointment" type="hidden" value="{{  $generateRandomString }}" placeholder="{{__('Enter Name')}}">
+            </div>
+        </div>
 
 
 
