@@ -2,7 +2,7 @@
 $data = DB::table('Reservation')->where('id',$id)->value('data');
 $From = DB::table('Reservation')->where('id',$id)->value('From');
 $to = DB::table('Reservation')->where('id',$id)->value('to');
-$all= $data." ("From". ".$From." - "."to". .$to." ) ";
+$all= $data." ("From". ".$From." - "."To". .$to." ) ";
 @endphp
 @extends("front.$version.layout")
 
