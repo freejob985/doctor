@@ -82,6 +82,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
   $(document).ready(function(){
+    $("input").on("change", function() {
+      this.setAttribute(
+          "data-date",
+          moment(this.value, "YYYY-MM-DD")
+          .format( this.getAttribute("data-date-format") )
+      )
+  }).trigger("change")
           $(".day").change(function(){
           var day=  this.value;
           var ajax_url = '{{ route('data.send') }}';
@@ -102,15 +109,7 @@
 
           });
         });
-
-
-        $("input").on("change", function() {
-          this.setAttribute(
-              "data-date",
-              moment(this.value, "YYYY-MM-DD")
-              .format( this.getAttribute("data-date-format") )
-          )
-      }).trigger("change")
+        
 </script>
 
 <!--   quote area end   -->
