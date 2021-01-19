@@ -6,7 +6,11 @@
 
 @section('meta-keywords', "$be->quote_meta_keywords")
 @section('meta-description', "$be->quote_meta_description")
-
+<style>
+  .img-responsive {
+    margin: 0 auto;
+}
+</style>
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!--   breadcrumb area start   -->
