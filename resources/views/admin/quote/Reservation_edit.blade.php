@@ -56,7 +56,7 @@
                 <div class="col-md-12 mb-4">
                   <label for="day">data</label>
                   <input type="date" placeholder="Please enter data" class="form-control" dateformat="d M y" name="day"
-                    id="date_input" placeholder="" value=" {{ $reservation->day}}">
+                    id="date_input" placeholder="" value=" {{ $reservation->data}}">
 
 
                   <span class="datepicker_label" style="pointer-events: none;"></span>
