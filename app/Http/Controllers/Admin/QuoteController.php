@@ -318,7 +318,7 @@ class QuoteController extends Controller
 
     public function dates()
     {
-        return view('admin.quote.dates', $data);
+        return view('admin.quote.dates');
     }
 
 
