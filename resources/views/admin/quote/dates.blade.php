@@ -45,7 +45,11 @@
             <form action="{{ route('admin.Reservation.add') }}" method="POST" enctype="multipart/form-data">
               @csrf
 
-
+              <div class="form-group" id="contentFg">
+                <label for="">Content **</label>
+                <textarea class="form-control summernote" name="content" data-height="300" placeholder="Enter content">{{replaceBaseUrl($service->content)}}</textarea>
+                <p id="errcontent" class="mb-0 text-danger em"></p>
+             </div>
 
 
               {{-- ##########################(end bg)################################### --}}
