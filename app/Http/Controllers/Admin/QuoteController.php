@@ -321,7 +321,7 @@ class QuoteController extends Controller
         return view('admin.quote.dates');
     }
     public function dates_(Request $request){
-        dd($request->all());
+      //  dd($request->all());
         DB::table('dates')
         ->update(['Dates' => $request->input('Dates'),
 ]); 
