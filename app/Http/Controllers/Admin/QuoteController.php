@@ -227,7 +227,7 @@ class QuoteController extends Controller
 
     public function Reservation_add(Request $request)
     {
-     //   dd($request->all());
+        //   dd($request->all());
 
         $this->validate($request, [
             'day' => 'required',
@@ -244,7 +244,7 @@ class QuoteController extends Controller
             'Time.required' => ' The data field is required',
 
         ]);
-        
+
         DB::table('Reservation')->insert([
             'day' => day__($request->input('day')),
             'Number' => $request->input('Number'),
@@ -261,49 +261,42 @@ class QuoteController extends Controller
     {
 
         $reservation = DB::table('Reservation')->find($id);
-     //   dd($reservation->id);
-        return view('admin.quote.Reservation_edit',compact('reservation'));
+        //   dd($reservation->id);
+        return view('admin.quote.Reservation_edit', compact('reservation'));
     }
 
-
-    public function Reservation_updata($id,Request $request)
+    public function Reservation_updata($id, Request $request)
     {
-       // dd($request->all());
-       $this->validate($request, [
-        'day' => 'required',
-        'Number' => 'required',
-        'From' => 'required',
-        'to' => 'required',
-        'Time' => 'required',
+        // dd($request->all());
+        $this->validate($request, [
+            'day' => 'required',
+            'Number' => 'required',
+            'From' => 'required',
+            'to' => 'required',
+            'Time' => 'required',
 
-    ], [
-        'day.required' => ' The data field is required',
-        'Number.required' => ' The data field is required',
-        'From.required' => ' The data field is required',
-        'to.required' => ' The data field is required',
-        'Time.required' => ' The data field is required',
+        ], [
+            'day.required' => ' The data field is required',
+            'Number.required' => ' The data field is required',
+            'From.required' => ' The data field is required',
+            'to.required' => ' The data field is required',
+            'Time.required' => ' The data field is required',
 
-    ]);
+        ]);
 
         DB::table('Reservation')
-        ->where('id', $id)
-        ->update([
-            'day' => day__($request->input('day')),
-            'Number' => $request->input('Number'),
-            'From' => $request->input('From'),
-            'to' => $request->input('to'),
-            'Time' => $request->input('Time'),
-            'data' => $request->input('day'),
-        ]);
+            ->where('id', $id)
+            ->update([
+                'day' => day__($request->input('day')),
+                'Number' => $request->input('Number'),
+                'From' => $request->input('From'),
+                'to' => $request->input('to'),
+                'Time' => $request->input('Time'),
+                'data' => $request->input('day'),
+            ]);
         return redirect()->back()->with('alert-success', 'The appointment has been modified');
 
-
-
-
     }
-
-
-
 
     public function processing()
     {
@@ -320,14 +313,15 @@ class QuoteController extends Controller
     {
         return view('admin.quote.dates');
     }
-    public function dates_(Request $request){
-      //  dd($request->all());
+    public function dates_(Request $request)
+    {
+        //  dd($request->all());
         DB::table('Dates')
-        ->update(['Dates' => $request->input('Dates'),
-]); 
-        
-    }
+            ->update(['Dates' => $request->input('Dates'),
+            ]);
+        return redirect()->back()->with('alert-success', 'Appointments were coordinated');
 
+    }
 
     public function completed()
     {
