@@ -322,7 +322,7 @@ class QuoteController extends Controller
     }
     public function dates_(Request $request){
       //  dd($request->all());
-        DB::table('dates')
+        DB::table('Dates')
         ->update(['Dates' => $request->input('Dates'),
 ]); 
         
