@@ -316,6 +316,12 @@ class QuoteController extends Controller
         return view('admin.quote.Reservation__all', $data);
     }
 
+    public function dates()
+    {
+        return view('admin.quote.dates', $data);
+    }
+
+
     public function completed()
     {
         $data['quotes'] = Quote::where('status', 2)->orderBy('id', 'DESC')->paginate(10);

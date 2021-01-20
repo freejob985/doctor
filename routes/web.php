@@ -717,6 +717,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::post('/quote/mail', 'Admin\QuoteController@mail')->name('admin.quotes.mail');
 
         Route::get('/Reservation/all', 'Admin\QuoteController@Reservation__all')->name('admin.Reservation.quotes');
+        Route::get('/dates/all', 'Admin\QuoteController@dates')->name('admin.dates.all');
 
         Route::get('/Reservation/dr', 'Admin\QuoteController@Reservation')->name('admin.Reservation.dr');
         Route::post('/Reservation/add', 'Admin\QuoteController@Reservation_add')->name('admin.Reservation.add');

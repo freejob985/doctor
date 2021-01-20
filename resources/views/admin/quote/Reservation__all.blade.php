@@ -32,6 +32,7 @@
   </a>
   <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.remind') }}">Remind</a>
 
+  <a type="button" class="btn btn-primary btn-xs" href="{{ route('admin.dates.all') }}">Dates</a>
 
 </p>
 <div class="row">
