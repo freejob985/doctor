@@ -47,7 +47,7 @@
 
 
 
-              
+
               {{-- ##########################(end bg)################################### --}}
               <input type="submit" style="background: #011a25;" class="btn btn-primary btn-large btn-block"
                 value="Add a new appointment" />
@@ -63,9 +63,7 @@
       </div>
       <div class="card-footer">
         <div class="row">
-          <div class="d-inline-block mx-auto">
-            {{$quotes->links()}}
-          </div>
+        
         </div>
       </div>
     </div>
