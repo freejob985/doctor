@@ -49,7 +49,7 @@ $Dates = DB::table('Dates')->value('Dates');
 
               <div class="form-group" id="contentFg">
                 <label for="">Content **</label>
-                <textarea class="form-control summernote" name="content" data-height="300" placeholder="Enter content">
+                <textarea class="form-control summernote" name="Dates" data-height="300" placeholder="Enter content">
                     {!! $Dates !!}
                 </textarea>
                 <p id="errcontent" class="mb-0 text-danger em"></p>
