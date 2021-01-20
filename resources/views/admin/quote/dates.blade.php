@@ -44,7 +44,7 @@ $Dates = DB::table('Dates')->value('Dates');
         <div class="row">
           <div class="col-lg-12">
 
-            <form action="{{ route('admin.Reservation.add') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.dates.up') }}" method="POST" enctype="multipart/form-data">
               @csrf
 
               <div class="form-group" id="contentFg">
