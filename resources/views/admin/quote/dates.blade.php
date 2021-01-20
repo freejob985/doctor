@@ -1,5 +1,7 @@
 @extends('admin.layout')
-
+@php
+$Dates = DB::table('Dates')->value('Dates');
+@endphp
 @section('content')
 <div class="page-header">
   <h4 class="page-title">Quotes</h4>
@@ -47,7 +49,9 @@
 
               <div class="form-group" id="contentFg">
                 <label for="">Content **</label>
-                <textarea class="form-control summernote" name="content" data-height="300" placeholder="Enter content">{{replaceBaseUrl($service->content)}}</textarea>
+                <textarea class="form-control summernote" name="content" data-height="300" placeholder="Enter content">
+                    {!! $Dates !!}
+                </textarea>
                 <p id="errcontent" class="mb-0 text-danger em"></p>
              </div>
 
