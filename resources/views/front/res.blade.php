@@ -36,7 +36,7 @@
             $route="#" ;
 
             }else{
-            $status="Available";
+            $status="verfügbar";
             $bootstrap="btn btn-success btn-xs";
             $route= route('front.quote.send', ['id'=>$quote->id]) ;
 
