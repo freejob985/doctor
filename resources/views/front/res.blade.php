@@ -13,9 +13,9 @@
           text-transform: uppercase;
           font-weight: 800;
       ">
-          <td scope="col">From</td>
-          <td scope="col">to</td>
-          <td scope="col">the status</td>
+          <td scope="col">vom</td>
+          <td scope="col">bis</td>
+          <td scope="col">Der Status</td>
 
         </tr>
         <tr>
