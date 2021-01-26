@@ -2,7 +2,9 @@
 
 @section('meta-keywords', "$be->home_meta_keywords")
 @section('meta-description', "$be->home_meta_description")
-
+@php
+$Dates = DB::table('Dates')->value('Dates');
+@endphp
 
 @section('content')
         <!--   hero area start   -->
@@ -186,58 +188,9 @@
                         </div>
                     </div>
                     <div class="col-lg-6 wow slideInRight">
-                        <table class="table table-bordered">
-                            <tbody>
-                              <tr style="
-                                background: #29282f;
-                                color: white;
-                                text-align: center;
-                                text-transform: uppercase;
-                                font-weight: 800;
-                            ">
-                                <td scope="col">day</td>
-                                <td scope="col">From</td>
-                                <td scope="col">to</td>
-                                <td scope="col">Time</td>
-                                <td scope="col">the status</td>
-                  
-                              </tr>
-                              <tr>
-                                @foreach(DB::table('Reservation')->orderBy('id','desc')->get() as $quote)
-                              <tr style="
-                              text-align: center;
-                              font-size: 16px;
-                              font-weight: bolder;
-                          ">
-                                <td>{{convertUtf8($quote->day)}}</td>
-                                <td>{{convertUtf8($quote->From)}}</td>
-                                <td>{{convertUtf8($quote->to)}}</td>
-                                <td>{{convertUtf8($quote->Time)}}</td>
-                                <td>
-                                  @php
-                                  $Available=$quote->status;
-                                  if($Available==$quote->Number){
-                                  $status="nicht verfügbar";
-                                  $bootstrap="btn btn-danger btn-xs";
-                                  $route="#" ;
-                                  
-                                  }else{
-                                  $status="verfügbar";
-                                  $bootstrap="btn btn-success btn-xs";
-                                  $route= route('front.quote.send', ['id'=>$quote->id]) ;
-                  
-                                  }
-                                  @endphp
-                                  <a type="button" class="{{ $bootstrap }}" href="{{ $route }}">{{ $status }}</button>
-                                </td>
-                  
-                              </tr>
-                  
-                              @endforeach
-                              </tr>
-                  
-                            </tbody>
-                          </table>
+                       <p>
+        {!! $Dates !!}
+      </p>
                     </div>
                 </div>
             </div>
