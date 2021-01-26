@@ -1,64 +1,64 @@
 <div class="container">
     
-    @if (count($reservation)>0)
-    
-    
+  @if (count($reservation)>0)
+  
+  
 <div class="col-lg-12">
-    <table class="table table-bordered">
-      <tbody>
-        <tr style="
-          background: #29282f;
-          color: white;
-          text-align: center;
-          text-transform: uppercase;
-          font-weight: 800;
-      ">
-          <td scope="col">vom</td>
-          <td scope="col">bis</td>
-          <td scope="col">Der Status</td>
-
-        </tr>
-        <tr>
-          @foreach($reservation as $quote)
-        <tr style="
+  <table class="table table-bordered">
+    <tbody>
+      <tr style="
+        background: #29282f;
+        color: white;
         text-align: center;
-        font-size: 16px;
-        font-weight: bolder;
+        text-transform: uppercase;
+        font-weight: 800;
     ">
-          <td>{{convertUtf8($quote->From)}}</td>
-          <td>{{convertUtf8($quote->to)}}</td>
-          <td>
-            @php
-            $Available=$quote->status;
-            if($Available==$quote->Number){
-            $status="nicht verfügbar";
-            $bootstrap="btn btn-danger btn-xs";
-            $route="#" ;
+        <td scope="col">von</td>
+        <td scope="col">bis</td>
+        <td scope="col">Der Status</td>
 
-            }else{
-            $status="verfügbar";
-            $bootstrap="btn btn-success btn-xs";
-            $route= route('front.quote.send', ['id'=>$quote->id]) ;
+      </tr>
+      <tr>
+        @foreach($reservation as $quote)
+      <tr style="
+      text-align: center;
+      font-size: 16px;
+      font-weight: bolder;
+  ">
+        <td>{{convertUtf8($quote->From)}}</td>
+        <td>{{convertUtf8($quote->to)}}</td>
+        <td>
+          @php
+          $Available=$quote->status;
+          if($Available==$quote->Number){
+          $status="Unavailable";
+          $bootstrap="btn btn-danger btn-xs";
+          $route="#" ;
 
-            }
-            @endphp
-            <a type="button" class="{{ $bootstrap }}" href="{{ $route }}">{{ $status }}</button>
-          </td>
+          }else{
+          $status="verf端gbar";
+          $bootstrap="btn btn-success btn-xs";
+          $route= route('front.quote.send', ['id'=>$quote->id]) ;
 
-        </tr>
+          }
+          @endphp
+          <a type="button" class="{{ $bootstrap }}" href="{{ $route }}">{{ $status }}</button>
+        </td>
 
-        @endforeach
-        </tr>
+      </tr>
 
-      </tbody>
-    </table>
-  </div>
+      @endforeach
+      </tr>
 
-  @else
+    </tbody>
+  </table>
+</div>
 
-  <div id="img" class="text-center">
-    <img class="img-responsive center-block" src="https://www.qstams.com/images/no_result_optimize.gif" alt="Chania">
-  </div>
+@else
 
-  @endif
+<div id="img" class="text-center">
+  <img class="img-responsive center-block" src="https://www.qstams.com/images/no_result_optimize.gif" alt="Chania">
+</div>
+
+@endif
 </div>
