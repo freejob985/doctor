@@ -43,15 +43,16 @@ function day__($date){
 $unixTimestamp = strtotime($date);
 //Get the day of the week using PHP's date function. preg_replace('/\bHello\b/', 'NEW', $text)
 $dayOfWeek = date("l", $unixTimestamp);
-dd(preg_replace("/\Thursday\b/","Donnerstag",$dayOfWeek));
-dd(str_replace("Thursday ","Donnerstag",$dayOfWeek));
-$dayOfWeek =str_replace("Monday ","Montag",$dayOfWeek);
-$dayOfWeek =str_replace("Tuesday ","Dienstag",$dayOfWeek);
-$dayOfWeek =str_replace("Wednesday ","Mittwoch",$dayOfWeek);
-$dayOfWeek =str_replace("Thursday ","Donnerstag",$dayOfWeek);
-$dayOfWeek =str_replace("Friday ","Freitag",$dayOfWeek);
-$dayOfWeek =str_replace("Saturday ","Samstag",$dayOfWeek);
-$dayOfWeek =str_replace("Sunday ","Sonntag",$dayOfWeek);
+
+$dayOfWeek =preg_replace("/\Monday\b/","Montag",$dayOfWeek);
+$dayOfWeek =preg_replace("/\Tuesday\b/","Dienstag",$dayOfWeek);
+$dayOfWeek =preg_replace("/\Wednesday\b/","Mittwoch",$dayOfWeek);
+$dayOfWeek =preg_replace("/\Thursday\b/","Donnerstag",$dayOfWeek);
+$dayOfWeek =preg_replace("/\Friday\b/","Freitag",$dayOfWeek);
+$dayOfWeek =preg_replace("/\Saturday\b/","Samstag",$dayOfWeek);
+$dayOfWeek =preg_replace("/\Sunday\b/","Sonntag",$dayOfWeek);
+
+
 dd($dayOfWeek);
 //Print out the day that our date fell on.
 return  $dayOfWeek;
