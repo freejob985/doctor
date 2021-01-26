@@ -798,7 +798,7 @@ class FrontendController extends Controller
             'Detection_type' => $request->input('Consaltion_type'),
         ]);
 
-        Session::flash('success', 'Quote request sent successfully');
+        Session::flash('success', 'Der Termin wurde erfolgreich reserviert');
         return back();
     }
 

@@ -217,12 +217,12 @@
                                   @php
                                   $Available=$quote->status;
                                   if($Available==$quote->Number){
-                                  $status="Unavailable";
+                                  $status="nicht verfügbar";
                                   $bootstrap="btn btn-danger btn-xs";
                                   $route="#" ;
                                   
                                   }else{
-                                  $status="Available";
+                                  $status="verfügbar";
                                   $bootstrap="btn btn-success btn-xs";
                                   $route= route('front.quote.send', ['id'=>$quote->id]) ;
                   
