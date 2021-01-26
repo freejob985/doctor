@@ -41,8 +41,9 @@ function remind(){
 function day__($date){
 //Convert the date string into a unix timestamp.
 $unixTimestamp = strtotime($date);
-//Get the day of the week using PHP's date function.
+//Get the day of the week using PHP's date function. preg_replace('/\bHello\b/', 'NEW', $text)
 $dayOfWeek = date("l", $unixTimestamp);
+dd(preg_replace("/\Thursday\b/","Donnerstag",$dayOfWeek));
 dd(str_replace("Thursday ","Donnerstag",$dayOfWeek));
 $dayOfWeek =str_replace("Monday ","Montag",$dayOfWeek);
 $dayOfWeek =str_replace("Tuesday ","Dienstag",$dayOfWeek);
