@@ -664,9 +664,9 @@ class FrontendController extends Controller
     }
     public function data_send(Request $request)
     {
-        // dd($request->all());
-
-        $reservation = DB::table('Reservation')->where('data', $request->input('day'))->get();
+   
+        $date=date_create($request->input('day'));
+        $reservation = DB::table('Reservation')->where('data', date_format($date,"Y-m-d"))->get();
         return view('front.res', compact('reservation'));
 
     }
