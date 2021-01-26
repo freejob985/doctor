@@ -53,7 +53,7 @@ $dayOfWeek =preg_replace("/\Saturday\b/","Samstag",$dayOfWeek);
 $dayOfWeek =preg_replace("/\Sunday\b/","Sonntag",$dayOfWeek);
 
 
-dd($dayOfWeek);
+
 //Print out the day that our date fell on.
 return  $dayOfWeek;
 }
