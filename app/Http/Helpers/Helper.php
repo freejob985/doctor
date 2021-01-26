@@ -23,7 +23,7 @@ function remind(){
         $array['reminder'] = "You are reminded of the agreed date";
         $array['details'] = $item->details;
         $array['History'] = $item->History;
-        $array['Noun'] ="Dear: ". $item->Noun;
+        $array['Noun'] ="Lieber/e: ". $item->Noun;
         $array['Detection_type'] = $item->Detection_type;
         Mail::send('remind', ['array' => $array], function ($m) use ($array) {
             $m->to($array['Email'])->subject('alriyadah@sub.alriyadah-tr.com')->getSwiftMessage()
@@ -39,17 +39,23 @@ function remind(){
 
 
 function day__($date){
-  
- 
 //Convert the date string into a unix timestamp.
 $unixTimestamp = strtotime($date);
- 
 //Get the day of the week using PHP's date function.
 $dayOfWeek = date("l", $unixTimestamp);
- 
+str_replace("Monday ","Montag",$dayOfWeek);
+str_replace("Tuesday ","Dienstag",$dayOfWeek);
+str_replace("Wednesday ","Mittwoch",$dayOfWeek);
+str_replace("Thursday ","Donnerstag",$dayOfWeek);
+str_replace("Friday ","Freitag",$dayOfWeek);
+str_replace("Saturday ","Samstag",$dayOfWeek);
+str_replace("Sunday ","Sonntag",$dayOfWeek);
 //Print out the day that our date fell on.
 return  $dayOfWeek;
 }
+
+
+
 
 
  function data_sub($datastring){

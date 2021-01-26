@@ -31,7 +31,7 @@
             @php
             $Available=$quote->status;
             if($Available==$quote->Number){
-            $status="Unavailable";
+            $status="nicht verfügbar";
             $bootstrap="btn btn-danger btn-xs";
             $route="#" ;
 
