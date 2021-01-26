@@ -50,6 +50,7 @@ str_replace("Thursday ","Donnerstag",$dayOfWeek);
 str_replace("Friday ","Freitag",$dayOfWeek);
 str_replace("Saturday ","Samstag",$dayOfWeek);
 str_replace("Sunday ","Sonntag",$dayOfWeek);
+dd($dayOfWeek);
 //Print out the day that our date fell on.
 return  $dayOfWeek;
 }
