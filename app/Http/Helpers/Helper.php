@@ -43,6 +43,7 @@ function day__($date){
 $unixTimestamp = strtotime($date);
 //Get the day of the week using PHP's date function.
 $dayOfWeek = date("l", $unixTimestamp);
+dd(gettype($dayOfWeek));
 $dayOfWeek =str_replace("Monday ","Montag",$dayOfWeek);
 $dayOfWeek =str_replace("Tuesday ","Dienstag",$dayOfWeek);
 $dayOfWeek =str_replace("Wednesday ","Mittwoch",$dayOfWeek);
